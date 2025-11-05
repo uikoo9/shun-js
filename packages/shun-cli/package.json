@@ -1,5 +1,5 @@
 {
-  "name": "@shun-js/shun-js",
+  "name": "@shun-js/shun-cli",
   "version": "0.0.3",
   "description": "shun.js cli",
   "files": [

@@ -8,6 +8,8 @@ options.logOptions = require('./server/log-options.js')();
 // options checks
 options.checks = [require('./server/util/check.js').checkGrafanaDomain];
 
+console.log(process.argv);
+
 // init
 (async () => {
   const app = await require('qiao-z')(options);
