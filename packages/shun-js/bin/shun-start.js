@@ -7,6 +7,7 @@ const { isExists } = require('qiao-file');
 
 // util
 const { getNPMGlobalPath } = require('./util.js');
+const { pm2Start } = require('./pm2.js');
 
 // debug
 const debug = require('debug')('shun.js');
@@ -41,11 +42,11 @@ async function startServer(serverName) {
 
   // check package
   const npmGlobalPath = getNPMGlobalPath();
-  const serverPath = path.resolve(npmGlobalPath, `./${serverName}`);
-  const serverPathIsExists = await isExists(serverPath);
-  debug(methodName, 'serverPath', serverPath);
-  debug(methodName, 'serverPathIsExists', serverPathIsExists);
-  if (!serverPathIsExists) {
+  const serverAppPath = path.resolve(npmGlobalPath, `./${serverName}/app.js`);
+  const serverAppPathIsExists = await isExists(serverAppPath);
+  debug(methodName, 'serverAppPath', serverAppPath);
+  debug(methodName, 'serverAppPathIsExists', serverAppPathIsExists);
+  if (!serverAppPathIsExists) {
     console.log(cli.colors.red(`服务未安装：${serverName}`));
     console.log();
     return;
@@ -58,6 +59,19 @@ async function startServer(serverName) {
   const serverConfigPathIsExists = await isExists(serverConfigPath);
   debug(methodName, 'serverConfigPath', serverConfigPath);
   debug(methodName, 'serverConfigPathIsExists', serverConfigPathIsExists);
+
+  // pm2
+  try {
+    await pm2Start({
+      name: serverConfigPrefix,
+      script: serverAppPath,
+      args: serverConfigPath,
+    });
+  } catch (error) {
+    console.log(cli.colors.red(`服务启动失败：${serverName}`));
+    console.log();
+    console.log(error);
+  }
 
   // r
   console.log(cli.colors.green(`服务启动成功：${serverName}`));
