@@ -1,37 +1,27 @@
-// path
-const path = require('path');
-
 // qiao
 const cli = require('qiao-cli');
 
+// cp
+const { execSync } = require('child_process');
+
+// debug
+const debug = require('debug')('shun.js');
+
 /**
- * checkPackage
- * @param {*} packageName
+ * getNPMGlobalPath
  * @returns
  */
-exports.checkPackage = (packageName) => {
-  console.log(cli.colors.gray(`开始处理包：${packageName}`));
+exports.getNPMGlobalPath = () => {
+  const methodName = 'getNPMRootPath';
 
-  // check
-  if (!packageName.startsWith('@shun-js')) {
-    console.log(cli.colors.red(`非法包：${packageName}`));
+  try {
+    const npmGlobalPath = execSync('npm root -g').toString().trim();
+    debug(methodName, 'npmGlobalPath', npmGlobalPath);
+
+    return npmGlobalPath;
+  } catch (error) {
+    console.log(cli.colors.red('获取NPM全局路径出错。'));
     console.log();
-    return;
+    console.log(error);
   }
-
-  // const
-  const newPackageName = packageName.split('/')[1];
-  console.log(cli.colors.gray(`服务名：${newPackageName}`));
-
-  // config
-  const workDir = process.cwd();
-  const newPackageConfigPath = path.resolve(workDir, `./${newPackageName}.json`);
-  console.log(cli.colors.gray(`配置文件：${newPackageConfigPath}`));
-  console.log();
-
-  // r
-  return {
-    newPackageName,
-    newPackageConfigPath,
-  };
 };
