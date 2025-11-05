@@ -1,6 +1,3 @@
-// config
-const config = require('../config.js');
-
 /**
  * checkGrafanaDomain
  * @param {*} req
@@ -20,7 +17,7 @@ exports.checkGrafanaDomain = async function (req, res) {
 
   // const
   const requestDomain = req.headers.authorization;
-  const grafanaDomain = config.grafanaDomain;
+  const grafanaDomain = global.QZ_CONFIG.grafanaDomain;
 
   // check domain
   if (grafanaDomain !== requestDomain) {

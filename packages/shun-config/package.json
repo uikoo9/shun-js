@@ -1,0 +1,17 @@
+{
+  "name": "@shun-js/shun-config",
+  "version": "0.0.3",
+  "description": "shun.js get server config",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "debug": "^4.4.3",
+    "qiao-file": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

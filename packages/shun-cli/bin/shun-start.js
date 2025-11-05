@@ -10,7 +10,7 @@ const { getNPMGlobalPath } = require('./util.js');
 const { pm2Start } = require('./pm2.js');
 
 // debug
-const debug = require('debug')('shun.js');
+const debug = require('debug')('@shun-js/shun-cli');
 
 // cmd
 cli.cmd.command('start <servers...>').description('待启动的服务名').action(startServers);

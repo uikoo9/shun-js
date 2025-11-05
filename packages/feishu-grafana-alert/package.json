@@ -10,6 +10,7 @@
     "start": "pm2 start app.js --name devops"
   },
   "dependencies": {
+    "@shun-js/shun-config": "^0.0.3",
     "qiao-log": "^5.1.9",
     "qiao-z": "^5.8.8"
   },
