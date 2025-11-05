@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/shun-config",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "shun.js get server config",
   "main": "index.js",
   "files": [
