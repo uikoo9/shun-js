@@ -1,0 +1,31 @@
+{
+  "name": "shun-js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "husky",
+    "build": "lerna run build",
+    "prettier": "qpro prettier",
+    "eslint": "qpro eslint",
+    "lint": "npm run build && npm run prettier && npm run eslint",
+    "cz": "qpro commitizen",
+    "pb": "lerna publish",
+    "graph": "nx graph",
+    "update": "qpro ncu u && npm -ws exec -- qpro ncu u",
+    "pkg": "qpro pkg ./packages",
+    "dpkg": "qpro pkg ./packages dev",
+    "clean": "nx reset",
+    "feishu:start": "npm run start -w @shun-js/feishu-grafana-alert"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "husky": "^9.1.7",
+    "lerna": "^9.0.0",
+    "lint-staged": "^16.2.6",
+    "nx": "^22.0.2",
+    "qiao-project": "^5.0.2"
+  }
+}

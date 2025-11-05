@@ -1,0 +1,4 @@
+{
+  "port": 7001,
+  "grafanaDomain": "domain grafana.sitin.ai"
+}
