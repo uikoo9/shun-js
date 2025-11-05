@@ -23,6 +23,7 @@ const { parseServerConfig } = require('@shun-js/shun-config');
   // options checks
   options.checks = [require('./server/util/check.js').checkGrafanaDomain];
 
+  // start
   const app = await require('qiao-z')(options);
   app.listen(config.port);
 })();

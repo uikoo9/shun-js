@@ -20,17 +20,23 @@ exports.grafanaAlert = async (req, res) => {
     return;
   }
 
-  // const
-  const alertObj = req.body.alerts[0];
-  const msg = [`【告警】${alertObj.labels.alertname}\n\n`];
+  try {
+    // const
+    const alertObj = req.body.alerts[0];
+    const msg = [`【告警】${alertObj.labels.alertname}\n\n`];
 
-  // msg
-  if (alertObj.labels.alertname === 'RAM Used') {
-    msg.push(`服务器：${alertObj.labels.server_name}\n`);
-    msg.push(`内网IP：${alertObj.labels.instance}\n`);
-    msg.push(`内存值：${alertObj.values.B.toFixed(2)}%\n`);
+    // msg
+    if (alertObj.labels.alertname === 'RAM Used') {
+      msg.push(`服务器：${alertObj.labels.server_name}\n`);
+      msg.push(`内网IP：${alertObj.labels.instance}\n`);
+      msg.push(`内存值：${alertObj.values.B.toFixed(2)}%\n`);
+    }
+
+    console.log(msg.join(''));
+    res.jsonSuccess('query success');
+  } catch (error) {
+    const msg = 'handle alert error';
+    req.logger.error(methodName, error);
+    res.jsonFail(msg);
   }
-
-  console.log(msg.join(''));
-  res.jsonSuccess('query success');
 };
