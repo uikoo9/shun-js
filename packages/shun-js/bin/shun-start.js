@@ -3,6 +3,7 @@ const path = require('path');
 
 // qiao
 const cli = require('qiao-cli');
+const { isExists } = require('qiao-file');
 
 // util
 const { getNPMGlobalPath } = require('./util.js');
@@ -15,23 +16,10 @@ cli.cmd.command('start <servers...>').description('待启动的服务名').actio
 
 // start servers
 async function startServers(servers) {
-  const methodName = 'startServers';
-
   try {
-    // log
-    console.log(cli.colors.gray(`开始启动以下服务：${servers.join(', ')}`));
-    console.log();
-
-    // for
-    const serverInfos = [];
     for (let i = 0; i < servers.length; i++) {
-      const server = servers[i];
-      const serverInfo = startServer(server);
-      if (!serverInfo) continue;
-
-      serverInfos.push(serverInfo);
+      await startServer(servers[i]);
     }
-    debug(methodName, 'serverInfos', serverInfos);
   } catch (error) {
     console.log(cli.colors.red('启动服务出错。'));
     console.log();
@@ -40,9 +28,9 @@ async function startServers(servers) {
 }
 
 // start servers
-function startServer(serverName) {
+async function startServer(serverName) {
   const methodName = 'startServer';
-  console.log(cli.colors.gray(`开始处理服务：${serverName}`));
+  console.log(cli.colors.gray(`开始启动服务：${serverName}`));
 
   // check
   if (!serverName.startsWith('@shun-js')) {
@@ -54,21 +42,24 @@ function startServer(serverName) {
   // check package
   const npmGlobalPath = getNPMGlobalPath();
   const serverPath = path.resolve(npmGlobalPath, `./${serverName}`);
+  const serverPathIsExists = await isExists(serverPath);
   debug(methodName, 'serverPath', serverPath);
+  debug(methodName, 'serverPathIsExists', serverPathIsExists);
+  if (!serverPathIsExists) {
+    console.log(cli.colors.red(`服务未安装：${serverName}`));
+    console.log();
+    return;
+  }
 
-  // const
-  const serverConfigPrefix = serverName.split('/')[1];
-  debug(methodName, 'serverConfigPrefix', serverConfigPrefix);
-
-  // config
+  // check config
   const workDir = process.cwd();
+  const serverConfigPrefix = serverName.split('/')[1];
   const serverConfigPath = path.resolve(workDir, `./${serverConfigPrefix}.json`);
-  console.log(cli.colors.gray(`配置文件：${serverConfigPath}`));
-  console.log();
+  const serverConfigPathIsExists = await isExists(serverConfigPath);
+  debug(methodName, 'serverConfigPath', serverConfigPath);
+  debug(methodName, 'serverConfigPathIsExists', serverConfigPathIsExists);
 
   // r
-  return {
-    serverConfigPrefix,
-    serverConfigPath,
-  };
+  console.log(cli.colors.green(`服务启动成功：${serverName}`));
+  console.log();
 }
