@@ -247,7 +247,6 @@ yarn.lock
 
 # iOS
 # *.pbxproj
-**/package-lock.json
 **/ios/smallwod@0.0.1
 **/ios/Podfile.lock
 
