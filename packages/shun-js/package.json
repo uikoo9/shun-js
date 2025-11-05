@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/shun-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "shun.js cli",
   "files": [
     "bin",
