@@ -29,7 +29,7 @@ exports.grafanaAlert = async (req, res) => {
     const msg = [`【告警】${alertObj.labels.alertname}\n\n`];
 
     // msg
-    if (alertObj.labels.alertname === 'RAM Used') {
+    if (alertObj.labels.alertname.indexOf('RAM Used') > -1) {
       msg.push(`服务器：${alertObj.labels.server_name}\n`);
       msg.push(`内网IP：${alertObj.labels.instance}\n`);
       msg.push(`内存值：${alertObj.values.B.toFixed(2)}%\n`);
