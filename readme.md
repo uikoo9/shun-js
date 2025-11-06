@@ -16,4 +16,4 @@ shunjs
 
 ## 业务模块
 
-- [@shun-js/feishu-grafana-alert](./packages/feishu-grafana-alert/readme.md): grafana告警的飞书webhook
+- [@shun-js/feishu-grafana-alert](./packages/feishu-grafana-alert/README.md): grafana告警的飞书webhook
