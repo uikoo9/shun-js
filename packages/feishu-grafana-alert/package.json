@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/feishu-grafana-alert",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "feishu grafana alert",
   "files": [
     "server",
@@ -10,7 +10,7 @@
     "start": "pm2 start app.js --name devops"
   },
   "dependencies": {
-    "@shun-js/shun-config": "^0.0.6",
+    "@shun-js/shun-config": "^0.0.7",
     "qiao-log": "^5.1.9",
     "qiao-z": "^5.8.9"
   },
