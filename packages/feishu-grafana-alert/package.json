@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/feishu-grafana-alert",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "feishu grafana alert",
   "keywords": [
     "shun.js",
@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@shun-js/shun-config": "^0.0.9",
-    "@shun-js/shun-service": "^0.0.9",
+    "@shun-js/shun-service": "^0.1.0",
     "qiao-log": "^5.1.9",
     "qiao-z": "^5.8.9"
   },
