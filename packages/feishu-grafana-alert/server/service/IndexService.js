@@ -27,19 +27,15 @@ exports.grafanaAlert = async (req, res) => {
     // const
     const alertObj = req.body.alerts[0];
     const msg = [`【告警】${alertObj.labels.alertname}\n\n`];
-    msg.push(`状态：${req.body.status}`);
+    msg.push(`状态：${req.body.status}\n`);
 
     // msg
     if (req.body.status === 'firing') {
       if (alertObj.labels.alertname.indexOf('RAM Used') > -1) {
-        msg.push(`服务器：${alertObj.labels.server_name}\n`);
-        msg.push(`内网IP：${alertObj.labels.instance}\n`);
         msg.push(`内存值：${alertObj.values.B.toFixed(2)}%\n`);
       }
       if (alertObj.labels.alertname.indexOf('CPU Busy') > -1) {
-        msg.push(`服务器：${alertObj.labels.server_name}\n`);
-        msg.push(`内网IP：${alertObj.labels.instance}\n`);
-        msg.push(`内存值：${alertObj.values.A.toFixed(2)}%\n`);
+        msg.push(`CPU值：${alertObj.values.A.toFixed(2)}%\n`);
       }
     }
 
