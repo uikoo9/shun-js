@@ -1,0 +1,34 @@
+{
+  "name": "@shun-js/feishu-bot",
+  "version": "0.0.8",
+  "description": "feishu bot",
+  "keywords": [
+    "shun.js",
+    "feishu",
+    "bot"
+  ],
+  "license": "MIT",
+  "author": "uikoo9 <uikoo9@qq.com>",
+  "homepage": "https://github.com/uikoo9/shun-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uikoo9/shun-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uikoo9/shun-js/issues"
+  },
+  "files": [
+    "server",
+    "app.js"
+  ],
+  "dependencies": {
+    "qiao-ajax": "^5.2.1",
+    "qiao-log": "^5.1.9",
+    "qiao-timer": "^5.7.6",
+    "qiao-z": "^5.7.7"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

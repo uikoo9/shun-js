@@ -1,0 +1,4 @@
+/**
+ * feishuMsgs
+ */
+exports.feishuMsgs = [];
