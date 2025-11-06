@@ -2,6 +2,20 @@
   "name": "@shun-js/shun-config",
   "version": "0.0.8",
   "description": "shun.js get server config",
+  "keywords": [
+    "shun.js",
+    "config"
+  ],
+  "license": "MIT",
+  "author": "uikoo9 <uikoo9@qq.com>",
+  "homepage": "https://github.com/uikoo9/shun-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uikoo9/shun-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uikoo9/shun-js/issues"
+  },
   "main": "index.js",
   "files": [
     "index.js"

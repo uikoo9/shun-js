@@ -2,13 +2,25 @@
   "name": "@shun-js/feishu-grafana-alert",
   "version": "0.0.8",
   "description": "feishu grafana alert",
+  "keywords": [
+    "shun.js",
+    "feishu",
+    "grafana alert"
+  ],
+  "license": "MIT",
+  "author": "uikoo9 <uikoo9@qq.com>",
+  "homepage": "https://github.com/uikoo9/shun-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uikoo9/shun-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uikoo9/shun-js/issues"
+  },
   "files": [
     "server",
     "app.js"
   ],
-  "scripts": {
-    "start": "pm2 start app.js --name devops"
-  },
   "dependencies": {
     "@shun-js/shun-config": "^0.0.8",
     "qiao-log": "^5.1.9",
