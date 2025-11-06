@@ -42,8 +42,10 @@ async function startServer(serverName) {
 
   // check package
   const npmGlobalPath = getNPMGlobalPath();
-  const serverAppPath = path.resolve(npmGlobalPath, `./${serverName}/app.js`);
+  const serverRootPath = path.resolve(npmGlobalPath, `./${serverName}`);
+  const serverAppPath = path.resolve(serverRootPath, './app.js');
   const serverAppPathIsExists = await isExists(serverAppPath);
+  debug(methodName, 'serverRootPath', serverRootPath);
   debug(methodName, 'serverAppPath', serverAppPath);
   debug(methodName, 'serverAppPathIsExists', serverAppPathIsExists);
   if (!serverAppPathIsExists) {
@@ -64,6 +66,7 @@ async function startServer(serverName) {
   try {
     await pm2Start({
       name: serverConfigPrefix,
+      cwd: serverRootPath,
       script: serverAppPath,
       args: serverConfigPath,
     });
