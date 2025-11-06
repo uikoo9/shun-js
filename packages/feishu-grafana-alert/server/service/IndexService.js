@@ -37,6 +37,9 @@ exports.grafanaAlert = async (req, res) => {
       if (alertObj.labels.alertname.indexOf('CPU Busy') > -1) {
         msg.push(`CPU值：${alertObj.values.A.toFixed(2)}%\n`);
       }
+      if (alertObj.labels.alertname.indexOf('Root FS Used') > -1) {
+        msg.push(`硬盘值：${alertObj.values.A.toFixed(2)}%\n`);
+      }
     }
 
     // final msg
