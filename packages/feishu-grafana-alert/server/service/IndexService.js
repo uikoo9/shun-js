@@ -1,3 +1,6 @@
+// services
+const { feishuBot } = require('@shun-js/shun-service');
+
 /**
  * grafana alert
  * @param {*} req
@@ -31,9 +34,17 @@ exports.grafanaAlert = async (req, res) => {
       msg.push(`内网IP：${alertObj.labels.instance}\n`);
       msg.push(`内存值：${alertObj.values.B.toFixed(2)}%\n`);
     }
+    const finalMsg = msg.join('');
+    req.logger.warn(methodName, 'finalMsg', finalMsg);
 
-    console.log(msg.join(''));
-    res.jsonSuccess('query success');
+    // feishu
+    const feishuBotRes = await feishuBot({
+      url: global.QZ_CONFIG.feishu.url,
+      feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
+      feishuMsg: finalMsg,
+    });
+    req.logger.warn(methodName, 'feishuBotRes', feishuBotRes);
+    res.json(feishuBotRes);
   } catch (error) {
     const msg = 'handle alert error';
     req.logger.error(methodName, error);

@@ -1,4 +1,8 @@
 {
   "port": 7001,
-  "grafanaDomain": "domain grafana.sitin.ai"
+  "grafanaDomain": "domain grafana.sitin.ai",
+  "feishu": {
+    "url": "http://localhost:7002/feishu/bot",
+    "feishuUrl": "https://open.feishu.cn/open-apis/bot/v2/hook/62b648fd-478d-4a4c-a42b-34a081bd0aae"
+  }
 }
