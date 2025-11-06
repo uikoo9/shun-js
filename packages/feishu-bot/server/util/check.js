@@ -1,6 +1,3 @@
-// config
-const config = require('../config.json');
-
 /**
  * checkAppIdAndKey
  * @param {*} req
@@ -26,13 +23,13 @@ exports.checkAppIdAndKey = async (req, res) => {
     res.jsonFail(msg);
     return;
   }
-  if (appId !== config.feishu.appId) {
+  if (appId !== global.QZ_CONFIG.feishu.appId) {
     const msg = 'not right appId';
     req.logger.warn(methodName, msg, req.body);
     res.jsonFail(msg);
     return;
   }
-  if (appKey !== config.feishu.appKey) {
+  if (appKey !== global.QZ_CONFIG.feishu.appKey) {
     const msg = 'not right appKey';
     req.logger.warn(methodName, msg, req.body);
     res.jsonFail(msg);

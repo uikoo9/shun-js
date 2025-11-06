@@ -1,24 +1,32 @@
-// qz
-const qz = require('qiao-z');
-
-// check
-const { checkAppIdAndKey } = require('./server/util/check.js');
-
-// options
-const options = {
-  // checks
-  checks: [checkAppIdAndKey],
-
-  // cron
-  cron: require('qiao-timer'),
-
-  // log
-  log: require('qiao-log'),
-  logOptions: require('./server/log-options.js')(),
-};
+// config
+const { parseServerConfig } = require('@shun-js/shun-config');
 
 // init
 (async () => {
-  const app = await qz(options);
-  app.listen(9006);
+  // config
+  const config = await parseServerConfig(process.argv);
+  if (!config) {
+    console.log('read server config fail');
+    return;
+  }
+
+  // options
+  const options = {};
+
+  // options config
+  options.config = config;
+
+  // options cron
+  options.cron = require('qiao-timer');
+
+  // options log
+  options.log = require('qiao-log');
+  options.logOptions = require('./server/log-options.js')();
+
+  // options checks
+  options.checks = [require('./server/util/check.js').checkAppIdAndKey];
+
+  // start
+  const app = await require('qiao-z')(options);
+  app.listen(config.port);
 })();
