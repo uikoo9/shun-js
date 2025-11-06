@@ -28,12 +28,12 @@ shunjs start @shun-js/feishu-bot
 ## 请求
 
 ```shell
-curl --location --request POST 'http://localhost:${config.port}/' \
---header 'authorization: ${config.grafanaDomain}' \
---data-urlencode 'alerts="{}"'
+curl --location --request POST 'http://localhost:${config.prot}/feishu/bot' \
+--data-urlencode 'content={ "post": { "zh_cn": { "content": [[{ "tag": "text", "text": "【告警】测试" }]] } } }' \
+--data-urlencode 'url=https://open.feishu.cn/open-apis/bot/v2/hook/xx'
 
 # 例如
-curl --location --request POST 'http://localhost:7001/grafana/alert' \
---header 'authorization: domain grafana.sitin.ai' \
---data-urlencode 'alerts="{}"'
+curl --location --request POST 'http://localhost:7002/feishu/bot' \
+--data-urlencode 'content={ "post": { "zh_cn": { "content": [[{ "tag": "text", "text": "【告警】测试" }]] } } }' \
+--data-urlencode 'url=https://open.feishu.cn/open-apis/bot/v2/hook/xx'
 ```

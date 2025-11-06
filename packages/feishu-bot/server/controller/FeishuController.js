@@ -5,8 +5,8 @@ const service = require('../service/FeishuService.js');
  * feishu controller
  */
 module.exports = (app) => {
-  // /
-  app.post('/', (req, res) => {
+  // /feishu/bot
+  app.post('/feishu/bot', (req, res) => {
     service.feishuMsg(req, res);
   });
 };

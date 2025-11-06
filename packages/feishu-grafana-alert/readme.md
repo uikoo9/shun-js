@@ -31,10 +31,10 @@ shunjs start @shun-js/feishu-grafana-alert
 ```shell
 curl --location --request POST 'http://localhost:${config.port}/grafana/alert' \
 --header 'authorization: ${config.grafanaDomain}' \
---data-urlencode 'alerts="{}"'
+--data-urlencode 'alerts=1'
 
 # 例如
 curl --location --request POST 'http://localhost:7001/grafana/alert' \
 --header 'authorization: domain grafana.sitin.ai' \
---data-urlencode 'alerts="{}"'
+--data-urlencode 'alerts=1'
 ```
