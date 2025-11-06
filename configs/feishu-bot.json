@@ -1,8 +1,3 @@
 {
-  "port": 7002,
-  "feishu": {
-    "url": "http://localhost:7002/",
-    "appId": "ClGunmgDYzBgLwVrrhCz",
-    "appKey": "zQeklGZgOLontjxSDtKk"
-  }
+  "port": 7002
 }

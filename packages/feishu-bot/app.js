@@ -23,9 +23,6 @@ const { parseServerConfig } = require('@shun-js/shun-config');
   options.log = require('qiao-log');
   options.logOptions = require('./server/log-options.js')();
 
-  // options checks
-  options.checks = [require('./server/util/check.js').checkAppIdAndKey];
-
   // start
   const app = await require('qiao-z')(options);
   app.listen(config.port);
