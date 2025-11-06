@@ -34,6 +34,13 @@ exports.grafanaAlert = async (req, res) => {
       msg.push(`内网IP：${alertObj.labels.instance}\n`);
       msg.push(`内存值：${alertObj.values.B.toFixed(2)}%\n`);
     }
+    if (alertObj.labels.alertname.indexOf('CPU Busy') > -1) {
+      msg.push(`服务器：${alertObj.labels.server_name}\n`);
+      msg.push(`内网IP：${alertObj.labels.instance}\n`);
+      msg.push(`内存值：${alertObj.values.A.toFixed(2)}%\n`);
+    }
+
+    // final msg
     const finalMsg = msg.join('');
     req.logger.warn(methodName, 'finalMsg', finalMsg);
 
