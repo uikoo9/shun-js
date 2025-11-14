@@ -47,9 +47,13 @@ exports.grafanaAlert = async (req, res) => {
     req.logger.warn(methodName, 'finalMsg', finalMsg);
 
     // feishu
+    const feishuUrl =
+      alertObj.labels.alertname.indexOf('prod') > -1
+        ? global.QZ_CONFIG.feishu.feishuUrlOnline
+        : global.QZ_CONFIG.feishu.feishuUrlTest;
     const feishuBotRes = await feishuBot({
       url: global.QZ_CONFIG.feishu.url,
-      feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
+      feishuUrl: feishuUrl,
       feishuMsg: finalMsg,
     });
     req.logger.warn(methodName, 'feishuBotRes', feishuBotRes);
