@@ -41,7 +41,7 @@ exports.grafanaAlert = async (req, res) => {
         msg.push(`硬盘值：${alertObj.values.A.toFixed(2)}%\n`);
       }
       if (alertObj.labels.alertname.indexOf('PGSQL') > -1) {
-        msg.push(`CPU值：${alertObj.values.D}\n`);
+        msg.push(`CPU值：${(alertObj.values.D * 100).toFixed(2)}%\n`);
       }
     }
 
