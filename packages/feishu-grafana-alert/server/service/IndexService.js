@@ -43,6 +43,9 @@ exports.grafanaAlert = async (req, res) => {
       if (alertObj.labels.alertname.indexOf('PGSQL') > -1) {
         msg.push(`CPU值：${(alertObj.values.D * 100).toFixed(2)}%\n`);
       }
+      if (alertObj.labels.alertname.indexOf('ring') > -1) {
+        msg.push(`恋爱铃总发送次数：${alertObj.values.E}\n`);
+      }
     }
 
     // final msg
