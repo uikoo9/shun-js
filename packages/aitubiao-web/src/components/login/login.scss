@@ -1,0 +1,120 @@
+// login
+@mixin login($width, $rowWidth, $rowHeight) {
+  .login-container {
+    width: $width;
+
+    > div {
+      margin-bottom: 10px;
+    }
+
+    .login-username {
+      width: $rowWidth;
+      height: $rowHeight;
+
+      .input {
+        margin: 0;
+      }
+    }
+
+    .login-code {
+      width: $rowWidth;
+      height: $rowHeight;
+
+      .login-code-l {
+        float: left;
+        width: 200px;
+
+        .input {
+          margin: 0;
+        }
+      }
+      .login-code-r {
+        float: left;
+        width: calc(100% - 200px);
+
+        .btn {
+          padding-top: 0;
+          .ctx {
+            width: 100%;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    .login-tips {
+      width: $rowWidth;
+      height: 40px;
+
+      color: red;
+      font-size: 16px;
+      line-height: 40px;
+      text-align: center;
+    }
+
+    .login-btn {
+      width: $rowWidth;
+      height: calc($rowHeight + 1px);
+
+      .btn {
+        padding-top: 0;
+
+        .ctx {
+          width: calc($rowWidth - 2px);
+        }
+      }
+    }
+  }
+}
+
+.pc {
+  $width: 400px;
+  $rowWidth: 100%;
+  $rowHeight: 51px;
+
+  // < 576
+  @media (max-width: 575.98px) {
+    @include login($width, $rowWidth, $rowHeight);
+  }
+
+  // > 576
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    @include login($width, $rowWidth, $rowHeight);
+  }
+
+  // > 768
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    @include login($width, $rowWidth, $rowHeight);
+  }
+
+  // > 992
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    @include login($width, $rowWidth, $rowHeight);
+  }
+
+  // > 1200
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    @include login($width, $rowWidth, $rowHeight);
+  }
+
+  // > 1400
+  @media (min-width: 1400px) {
+    @include login($width, $rowWidth, $rowHeight);
+  }
+}
+
+.mobile {
+  $width: 12rem;
+  $rowWidth: 100%;
+  $rowHeight: 51px;
+
+  @include login($width, $rowWidth, $rowHeight);
+
+  .login-modal {
+    .modal {
+      width: 12rem !important;
+    }
+  }
+}

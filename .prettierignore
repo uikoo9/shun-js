@@ -13,3 +13,4 @@ package-lock.json
 .drawio
 .dockerignore
 Dockerfile
+packages/aitubiao-server/static

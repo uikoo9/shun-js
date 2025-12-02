@@ -1,0 +1,171 @@
+// cards
+@mixin cards() {
+  .cards-container {
+    width: 100%;
+
+    $imgWidth: 600px;
+    $imgHeight: 400px;
+    .card-row {
+      width: 100%;
+      height: calc($imgHeight + 40px);
+      border-bottom: 1px dotted #333;
+
+      .card-img {
+        float: left;
+        width: $imgWidth;
+        height: $imgHeight;
+        padding: 20px;
+        cursor: pointer;
+
+        img {
+          display: block;
+          width: $imgWidth;
+          height: $imgHeight;
+          border: solid 1px #999;
+          border-radius: 5px;
+        }
+      }
+      .card-tip {
+        float: left;
+        width: calc(100% - $imgWidth - 40px);
+        height: $imgHeight;
+        padding: 20px 0;
+
+        $titleHeight: 40px;
+        $btnHeight: 52px;
+        .card-title {
+          width: 100%;
+          height: $titleHeight;
+          color: #333;
+          font-size: 30px;
+          line-height: $titleHeight;
+          text-align: center;
+        }
+        .card-prompt {
+          width: 100%;
+          height: calc(100% - $titleHeight - $btnHeight - 40px);
+          padding: 20px 0;
+
+          color: #666;
+          font-size: 16px;
+          line-height: 30px;
+          // text-align: center;
+          white-space: pre-line;
+          overflow: auto;
+        }
+        .card-btn {
+          width: 100%;
+          height: $btnHeight;
+          cursor: pointer;
+
+          .btn {
+            padding: 0;
+
+            .ctx {
+              width: calc(100% - 2px);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pc {
+  // < 576
+  @media (max-width: 575.98px) {
+    @include cards();
+  }
+
+  // > 576
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    @include cards();
+  }
+
+  // > 768
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    @include cards();
+  }
+
+  // > 992
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    @include cards();
+  }
+
+  // > 1200
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    @include cards();
+  }
+
+  // > 1400
+  @media (min-width: 1400px) {
+    @include cards();
+  }
+}
+
+.mobile {
+  .cards-container {
+    width: 16rem;
+
+    $imgWidth: 14rem;
+    .card-row {
+      width: 100%;
+      border-bottom: 1px dotted #333;
+
+      .card-img {
+        width: calc($imgWidth - 2px);
+        padding: 1rem;
+        cursor: pointer;
+
+        img {
+          display: block;
+          width: $imgWidth;
+          border: solid 1px #999;
+          border-radius: 5px;
+        }
+      }
+      .card-tip {
+        width: $imgWidth;
+        padding: 1rem;
+
+        $titleHeight: 40px;
+        $btnHeight: 52px;
+        .card-title {
+          width: 100%;
+          height: $titleHeight;
+          color: #333;
+          font-size: 30px;
+          line-height: $titleHeight;
+          text-align: center;
+        }
+        .card-prompt {
+          width: 100%;
+          max-height: 8rem;
+          padding: 1rem 0;
+
+          color: #666;
+          font-size: 14px;
+          line-height: 30px;
+          white-space: pre-line;
+
+          overflow: auto;
+        }
+        .card-btn {
+          width: 100%;
+          height: $btnHeight;
+          cursor: pointer;
+
+          .btn {
+            padding: 0;
+
+            .ctx {
+              width: calc(100% - 2px);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

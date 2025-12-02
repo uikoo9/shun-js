@@ -1,0 +1,231 @@
+// index
+@mixin index($width, $bannerImgWidth, $bannerImgHeight) {
+  .container {
+    width: $width;
+    min-width: 1000px;
+    margin: 0 auto;
+
+    .header {
+      .navs {
+        .nav {
+          width: 120px;
+          text-align: center;
+        }
+      }
+    }
+
+    .banner {
+      width: $width;
+      padding: 50px 0;
+      overflow: auto;
+      border-bottom: 1px dotted #333;
+
+      .banner-img {
+        float: left;
+        width: $bannerImgWidth;
+        border: solid 1px #999;
+        border-radius: 5px;
+        cursor: pointer;
+
+        img {
+          display: block;
+          width: $bannerImgWidth;
+          border-radius: 5px;
+        }
+      }
+      .banner-run {
+        float: left;
+        width: calc(100% - $bannerImgWidth - 2px - 20px);
+        height: calc($bannerImgHeight + 2px);
+        padding-left: 20px;
+
+        $btnHeight: 52px;
+        .banner-textarea {
+          width: calc(100% - 20px - 2px);
+          height: calc(100% - $btnHeight - 20px - 20px - 2px);
+          padding: 10px;
+          margin-bottom: 20px;
+          border: solid 1px #999;
+          border-radius: 5px;
+
+          textarea {
+            display: block;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px - 1px);
+            padding: 10px;
+            resize: none;
+            border: none;
+            outline: none;
+            color: #333;
+            font-size: 14px;
+            line-height: 30px;
+          }
+        }
+        .banner-button {
+          width: 100%;
+          height: $btnHeight;
+          cursor: pointer;
+
+          .btn {
+            padding: 0;
+
+            .ctx {
+              width: calc(100% - 2px);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pc {
+  $imgWidth: 3128px;
+  $imgHeight: 1942px;
+
+  // < 576
+  @media (max-width: 575.98px) {
+    $width: 992px;
+    $bannerImgWidth: calc($imgWidth / 8);
+    $bannerImgHeight: calc($imgHeight / 8);
+    @include index($width, $bannerImgWidth, $bannerImgHeight);
+  }
+
+  // > 576
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    $width: 992px;
+    $bannerImgWidth: calc($imgWidth / 8);
+    $bannerImgHeight: calc($imgHeight / 8);
+    @include index($width, $bannerImgWidth, $bannerImgHeight);
+    .header {
+      .navs {
+        .nav {
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  // > 768
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    $width: 992px;
+    $bannerImgWidth: calc($imgWidth / 7);
+    $bannerImgHeight: calc($imgHeight / 7);
+    @include index($width, $bannerImgWidth, $bannerImgHeight);
+    .header {
+      .navs {
+        .nav {
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  // > 992
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    $width: 992px;
+    $bannerImgWidth: calc($imgWidth / 6);
+    $bannerImgHeight: calc($imgHeight / 6);
+    @include index($width, $bannerImgWidth, $bannerImgHeight);
+  }
+
+  // > 1200
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    $width: 1200px;
+    $bannerImgWidth: calc($imgWidth / 5);
+    $bannerImgHeight: calc($imgHeight / 5);
+    @include index($width, $bannerImgWidth, $bannerImgHeight);
+  }
+
+  // > 1400
+  @media (min-width: 1400px) {
+    $width: 1400px;
+    $bannerImgWidth: calc($imgWidth / 4);
+    $bannerImgHeight: calc($imgHeight / 4);
+    @include index($width, $bannerImgWidth, $bannerImgHeight);
+  }
+}
+
+.mobile {
+  $width: 16rem;
+  .container {
+    width: $width;
+    margin: 0 auto;
+
+    .header {
+      .navs {
+        .nav {
+          width: calc(10rem - 20px);
+        }
+        .nav:nth-child(2) {
+          display: none;
+        }
+        .nav:nth-child(3) {
+          display: none;
+        }
+      }
+    }
+
+    .banner {
+      width: calc($width - 40px);
+      padding: 30px 20px;
+      border-bottom: 1px dotted #333;
+
+      .banner-img {
+        width: calc(100% - 2px);
+        margin-bottom: 20px;
+        border: solid 1px #999;
+        border-radius: 5px;
+        cursor: pointer;
+
+        img {
+          display: block;
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+      .banner-run {
+        width: 100%;
+        height: 12rem;
+
+        $btnHeight: 52px;
+        .banner-textarea {
+          width: calc(100% - 20px - 2px);
+          height: calc(100% - $btnHeight - 20px - 20px - 2px);
+          padding: 10px;
+          margin-bottom: 20px;
+          border: solid 1px #999;
+          border-radius: 5px;
+
+          textarea {
+            display: block;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px - 1px);
+            padding: 10px;
+            resize: none;
+            border: none;
+            outline: none;
+            color: #333;
+            font-size: 16px;
+            line-height: 20px;
+          }
+        }
+        .banner-button {
+          width: 100%;
+          height: $btnHeight;
+          cursor: pointer;
+
+          .btn {
+            padding: 0;
+
+            .ctx {
+              width: calc(100% - 2px);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
