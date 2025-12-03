@@ -9,7 +9,7 @@ shun.js服务：grafana的飞书webhook
 ```json
 {
   "port": 7001,
-  "grafanaDomain": "domain grafana.sitin.ai"
+  "grafanaDomain": "domain grafana.xxx.ai"
 }
 ```
 
@@ -29,12 +29,7 @@ shunjs start @shun-js/feishu-grafana-alert
 ## 请求
 
 ```shell
-curl --location --request POST 'http://localhost:${config.port}/grafana/alert' \
---header 'authorization: ${config.grafanaDomain}' \
---data-urlencode 'alerts=1'
-
-# 例如
 curl --location --request POST 'http://localhost:7001/grafana/alert' \
---header 'authorization: domain grafana.sitin.ai' \
+--header 'authorization: domain grafana.xxx.ai' \
 --data-urlencode 'alerts=1'
 ```
