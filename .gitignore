@@ -264,7 +264,6 @@ CLAUDE.md
 ## -- project --
 .nx
 configs
-config.json
 config-production.js
 config.js
 packages/aitubiao-server/static

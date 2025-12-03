@@ -28,7 +28,8 @@
     "dpkg": "qpro pkg ./packages dev",
     "clean": "nx reset",
     "start:feishu-bot": "cd configs && shunjs start @shun-js/feishu-bot",
-    "start:feishu-grafana-alert": "cd configs && shunjs start @shun-js/feishu-grafana-alert"
+    "start:feishu-grafana-alert": "cd configs && shunjs start @shun-js/feishu-grafana-alert",
+    "build:aitubiao-web": "npm run build -w @shun-js/aitubiao-web && npm run upload -w @shun-js/aitubiao-web"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",

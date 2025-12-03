@@ -9,7 +9,7 @@
     "analyzer": "qwebpack analyzer ./webpack/qiao-webpack.prod.js",
     "dev": "qwebpack dev ./webpack/qiao-webpack.dev.js",
     "build": "rm -rf ../aitubiao-server/static && rm -rf ../aitubiao-server/views && qwebpack build ./webpack/qiao-webpack.prod.js",
-    "upload": "qcos fo ./config.json ../aitubiao-server/static aitubiao/static"
+    "upload": "qcos fo ../../configs/aitubiao-web.json ../aitubiao-server/static aitubiao/static"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",

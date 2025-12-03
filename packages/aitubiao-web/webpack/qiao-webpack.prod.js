@@ -14,7 +14,7 @@ const entry = require('./entry.js');
 const plugins = require('./plugins-prod.js');
 
 // output path
-const outputPath = path.resolve(__dirname, '../../server-index/static');
+const outputPath = path.resolve(__dirname, '../../aitubiao-server/static');
 
 /**
  * qiao.webpack.js
