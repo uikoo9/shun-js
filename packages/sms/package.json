@@ -1,0 +1,35 @@
+{
+  "name": "@shun-js/sms",
+  "version": "0.1.9",
+  "description": "sms",
+  "keywords": [
+    "shun.js",
+    "sms"
+  ],
+  "license": "MIT",
+  "author": "uikoo9 <uikoo9@qq.com>",
+  "homepage": "https://github.com/uikoo9/shun-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uikoo9/shun-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uikoo9/shun-js/issues"
+  },
+  "files": [
+    "server",
+    "app.js"
+  ],
+  "dependencies": {
+    "@shun-js/shun-config": "^0.0.9",
+    "@shun-js/shun-service": "^0.1.0",
+    "qiao-log": "^5.1.9",
+    "qiao-sms": "^5.9.0",
+    "qiao-z": "^5.8.9",
+    "qiao-z-service": "^5.8.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
