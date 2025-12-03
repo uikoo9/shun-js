@@ -1,5 +1,5 @@
-// feishu
-const { sendMsgToFeishu } = require('qiao-z-service');
+// services
+const { feishuBot } = require('@shun-js/shun-service');
 
 /**
  * feishuMsg
@@ -8,11 +8,9 @@ const { sendMsgToFeishu } = require('qiao-z-service');
 exports.feishuMsg = (msg) => {
   if (global.QZ_CONFIG.env !== 'production') return;
 
-  sendMsgToFeishu({
+  feishuBot({
     url: global.QZ_CONFIG.feishu.url,
-    appId: global.QZ_CONFIG.feishu.appId,
-    appKey: global.QZ_CONFIG.feishu.appKey,
-    feishuUrl: global.QZ_CONFIG.urls.feishuUrl,
+    feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
     feishuMsg: msg,
   });
 };
