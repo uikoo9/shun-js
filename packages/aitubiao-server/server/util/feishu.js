@@ -1,21 +1,18 @@
 // feishu
 const { sendMsgToFeishu } = require('qiao-z-service');
 
-// config
-const config = require('../config.js');
-
 /**
  * feishuMsg
  * @param {*} msg
  */
 exports.feishuMsg = (msg) => {
-  if (config.env !== 'production') return;
+  if (global.QZ_CONFIG.env !== 'production') return;
 
   sendMsgToFeishu({
-    url: config.feishu.url,
-    appId: config.feishu.appId,
-    appKey: config.feishu.appKey,
-    feishuUrl: config.urls.feishuUrl,
+    url: global.QZ_CONFIG.feishu.url,
+    appId: global.QZ_CONFIG.feishu.appId,
+    appKey: global.QZ_CONFIG.feishu.appKey,
+    feishuUrl: global.QZ_CONFIG.urls.feishuUrl,
     feishuMsg: msg,
   });
 };

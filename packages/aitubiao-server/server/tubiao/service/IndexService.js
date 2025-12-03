@@ -4,9 +4,6 @@ const { genChart } = require('qiao-agent');
 // util
 const { chartFeishuMsg, chartResFeishuMsg, errorFeishuMsg } = require('../../util/feishu.js');
 
-// config
-const config = require('../../config.js');
-
 /**
  * index
  * @param {*} req
@@ -49,7 +46,7 @@ exports.chart = async (req, res) => {
   // go
   try {
     const mcpUrl = 'http://172.31.26.31:9201/mcp';
-    const chartRes = await genChart(config.llm, userPrompt, mcpUrl);
+    const chartRes = await genChart(global.QZ_CONFIG.llm, userPrompt, mcpUrl);
     req.logger.info(methodName, 'chartRes', chartRes);
 
     // check

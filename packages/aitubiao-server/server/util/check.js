@@ -1,9 +1,6 @@
 // qiao
 const { userCheck } = require('qiao-z-service');
 
-// config
-const config = require('../config.js');
-
 /**
  * checkUserAuth
  * @param {*} req
@@ -11,10 +8,10 @@ const config = require('../config.js');
  * @returns
  */
 exports.checkUserAuth = async function (req, res) {
-  const userCheckRes = await userCheck(config.user, {
+  const userCheckRes = await userCheck(global.QZ_CONFIG.user, {
     userid: req.headers.userid,
     usertoken: req.headers.usertoken,
-    paths: JSON.stringify(config.paths),
+    paths: JSON.stringify(global.QZ_CONFIG.paths),
     path: req.url.pathname,
   });
 
