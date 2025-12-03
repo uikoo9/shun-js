@@ -1,8 +1,8 @@
 // sms
 const { submailSMS } = require('qiao-sms');
 
-// feishu
-const { sendMsgToFeishu } = require('qiao-z-service');
+// services
+const { feishuBot } = require('@shun-js/shun-service');
 
 /**
  * sendSms
@@ -28,13 +28,13 @@ exports.sendSms = async (req, res, mobile, content) => {
   req.logger.info(methodName, 'smsRes', smsRes);
 
   // feishu
-  sendMsgToFeishu({
+  const finalMsg = `【提醒】status: ${smsRes.status}, msg: ${smsRes.msg}, mobile: ${mobile}, content: ${content}`;
+  const feishuBotRes = await feishuBot({
     url: global.QZ_CONFIG.feishu.url,
-    appId: global.QZ_CONFIG.feishu.appId,
-    appKey: global.QZ_CONFIG.feishu.appKey,
-    feishuUrl: global.QZ_CONFIG.urls.feishuUrl,
-    feishuMsg: `【提醒】status: ${smsRes.status}, msg: ${smsRes.msg}, mobile: ${mobile}, content: ${content}`,
+    feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
+    feishuMsg: finalMsg,
   });
+  req.logger.warn(methodName, 'feishuBotRes', feishuBotRes);
 
   // check
   if (smsRes.status !== 'success') {

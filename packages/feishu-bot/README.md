@@ -8,7 +8,7 @@ shun.js服务：飞书机器人消息
 
 ```json
 {
-  "port": 7002
+  "port": 8001
 }
 ```
 
@@ -33,7 +33,7 @@ curl --location --request POST 'http://localhost:${config.prot}/feishu/bot' \
 --data-urlencode 'url=https://open.feishu.cn/open-apis/bot/v2/hook/xx'
 
 # 例如
-curl --location --request POST 'http://localhost:7002/feishu/bot' \
+curl --location --request POST 'http://localhost:8001/feishu/bot' \
 --data-urlencode 'content={ "post": { "zh_cn": { "content": [[{ "tag": "text", "text": "【告警】测试" }]] } } }' \
 --data-urlencode 'url=https://open.feishu.cn/open-apis/bot/v2/hook/xx'
 ```
