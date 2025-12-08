@@ -14,7 +14,7 @@ shun.js服务：国内短信服务
     "appkey": "xx"
   },
   "feishu": {
-    "url": "http://localhost:8001/feishu/bot",
+    "url": "http://127.0.0.1:8001/feishu/bot",
     "feishuUrl": "https://open.feishu.cn/open-apis/bot/v2/hook/xx"
   }
 }
@@ -36,7 +36,7 @@ shunjs start @shun-js/sms
 ## 请求
 
 ```shell
-curl --location --request POST 'http://localhost:8002/sms' \
+curl --location --request POST 'http://127.0.0.1:8002/sms' \
 --data-urlencode 'mobile=xx' \
 --data-urlencode 'content=【xx】验证码：123456，如非本人操作，请忽略此短信。'
 ```

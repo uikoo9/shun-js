@@ -29,7 +29,7 @@ shunjs start @shun-js/feishu-grafana-alert
 ## 请求
 
 ```shell
-curl --location --request POST 'http://localhost:7001/grafana/alert' \
+curl --location --request POST 'http://127.0.0.1:7001/grafana/alert' \
 --header 'authorization: domain grafana.xxx.ai' \
 --data-urlencode 'alerts=1'
 ```
