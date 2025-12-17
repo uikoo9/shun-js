@@ -263,6 +263,7 @@ CLAUDE.md
 
 ## -- project --
 .nx
+.npmrc
 configs
 config-production.js
 config.js
