@@ -45,7 +45,7 @@ exports.chart = async (req, res) => {
 
   // go
   try {
-    const mcpUrl = 'http://172.31.26.31:9201/mcp';
+    const mcpUrl = global.QZ_CONFIG.mcpChartUrl;
     const chartRes = await genChart(global.QZ_CONFIG.llm, userPrompt, mcpUrl);
     req.logger.info(methodName, 'chartRes', chartRes);
 
