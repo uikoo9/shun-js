@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/user",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "user",
   "keywords": [
     "shun.js",
@@ -21,8 +21,8 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.0.9",
-    "@shun-js/shun-service": "^0.1.0",
+    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-service": "^0.3.0",
     "qiao-encode": "^5.0.1",
     "qiao-log": "^5.1.9",
     "qiao-mysql": "^5.8.6",

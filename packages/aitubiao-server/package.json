@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/aitubiao-server",
-  "version": "0.0.6",
+  "version": "0.3.0",
   "description": "aitubiao.online server",
   "keywords": [
     "ai tubiao"
@@ -22,8 +22,8 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.0.9",
-    "@shun-js/shun-service": "^0.1.0",
+    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-service": "^0.3.0",
     "qiao-agent": "^0.2.5",
     "qiao-file": "^5.0.1",
     "qiao-log": "^5.1.9",
