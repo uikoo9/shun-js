@@ -5,7 +5,7 @@ shun.js 各服务之间调用的工具
 ## 示例
 
 ```js
-// services
+// services1
 const { feishuBot } = require('@shun-js/shun-service');
 
 // feishu

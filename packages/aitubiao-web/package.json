@@ -8,7 +8,7 @@
   "scripts": {
     "analyzer": "qwebpack analyzer ./webpack/qiao-webpack.prod.js",
     "dev": "qwebpack dev ./webpack/qiao-webpack.dev.js",
-    "build": "rm -rf ../aitubiao-server/static && rm -rf ../aitubiao-server/views && qwebpack build ./webpack/qiao-webpack.prod.js",
+    "webpack": "rm -rf ../aitubiao-server/static && rm -rf ../aitubiao-server/views && qwebpack build ./webpack/qiao-webpack.prod.js",
     "upload": "qcos fo ../../configs/aitubiao-web.json ../aitubiao-server/static aitubiao/static"
   },
   "dependencies": {

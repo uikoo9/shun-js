@@ -29,7 +29,7 @@
     "clean": "nx reset",
     "start:feishu-bot": "cd configs && shunjs start @shun-js/feishu-bot",
     "start:feishu-grafana-alert": "cd configs && shunjs start @shun-js/feishu-grafana-alert",
-    "build:aitubiao-web": "npm run build -w @shun-js/aitubiao-web && npm run upload -w @shun-js/aitubiao-web"
+    "build:aitubiao-web": "npm run webpack -w @shun-js/aitubiao-web && npm run upload -w @shun-js/aitubiao-web"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
