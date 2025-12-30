@@ -7,3 +7,4 @@ package-lock.json
 # packages
 
 packages/aitubiao-server/static
+packages/mcp-admin-api/static

@@ -1,0 +1,27 @@
+{
+  "name": "@shun-js/mcp-admin-web",
+  "private": true,
+  "version": "0.2.1",
+  "sideEffects": [
+    "**/*.scss"
+  ],
+  "scripts": {
+    "analyzer": "qwebpack analyzer ./webpack/qiao-webpack.prod.js",
+    "dev": "qwebpack dev ./webpack/qiao-webpack.dev.js",
+    "webpack": "rm -rf ../mcp-admin-api/static && rm -rf ../mcp-admin-api/views && qwebpack build ./webpack/qiao-webpack.prod.js",
+    "upload": "qcos fo ../../configs/mcp-admin-web.json ../mcp-admin-api/static mcp-admin/static"
+  },
+  "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "antd": "^5.27.1",
+    "dayjs": "^1.11.13",
+    "qiao-ajax": "^5.2.1",
+    "qiao-json": "^5.1.9",
+    "qiao.cookie.js": "^3.7.5",
+    "qiao.log.js": "^3.7.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router": "^7.8.1",
+    "zustand": "^5.0.8"
+  }
+}

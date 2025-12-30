@@ -1,0 +1,9 @@
+export { Login } from './Login.jsx';
+export { UcenterUser } from './UcenterUser.jsx';
+export { UcenterMenu } from './UcenterMenu.jsx';
+export { UcenterRole } from './UcenterRole.jsx';
+export { UcenterRolemenu } from './UcenterRolemenu.jsx';
+export { UcenterRoleuser } from './UcenterRoleuser.jsx';
+export { McpInfo } from './McpInfo.jsx';
+export { McpItem } from './McpItem.jsx';
+export { McpWord } from './McpWord.jsx';
