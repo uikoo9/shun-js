@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/mcp-admin-server",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "mcp-servers.online admin api",
   "keywords": [
     "mcp servers"
