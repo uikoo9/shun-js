@@ -14,7 +14,7 @@ const entry = require('./entry.js');
 const plugins = require('./plugins-prod.js');
 
 // output path
-const outputPath = path.resolve(__dirname, '../../mcp-admin-api/static');
+const outputPath = path.resolve(__dirname, '../../mcp-admin-server/static');
 
 /**
  * qiao.webpack.js
