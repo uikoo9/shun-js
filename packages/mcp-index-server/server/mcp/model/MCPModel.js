@@ -21,7 +21,7 @@ exports.getMCPListFirstPage = async (req) => {
   // go
   try {
     // check
-    const mcpListRes = await post(global.QZ_CONFIG.urls.mcpUrl + url);
+    const mcpListRes = await post(global.QZ_CONFIG.mcpAPIUrl + url);
     if (mcpListRes.status !== 200) {
       const msg = `request ${url} fail: status is ${mcpListRes.status}`;
       req.logger.warn(methodName, msg);
