@@ -14,7 +14,7 @@ const entry = require('./entry.js');
 const plugins = require('./plugins-prod.js');
 
 // output path
-const outputPath = path.resolve(__dirname, '../../mcp-index-web/static');
+const outputPath = path.resolve(__dirname, '../../mcp-index-server/static');
 
 /**
  * qiao.webpack.js

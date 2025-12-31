@@ -269,3 +269,4 @@ config-production.js
 config.js
 packages/aitubiao-server/static
 packages/mcp-admin-server/static
+packages/mcp-index-server/static
