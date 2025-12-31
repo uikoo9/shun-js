@@ -1,0 +1,103 @@
+// search
+@mixin search($searchWidth) {
+  .search {
+    width: $searchWidth;
+    height: 100px;
+    margin: 0 auto;
+
+    > div {
+      float: left;
+      height: 50px;
+    }
+
+    .search-input {
+      width: calc(100% - 122px - 122px);
+      padding-top: 25px;
+    }
+    .search-btn {
+      width: 100px;
+      padding-top: 4px;
+      padding-left: 20px;
+    }
+  }
+}
+
+// options
+@mixin options() {
+  .options {
+    width: 100%;
+    // height: 71px;
+  }
+
+  .options.type {
+    height: 131px;
+
+    .options-title {
+      height: 90px;
+    }
+    .options-breadcrumbs {
+      height: 131px;
+    }
+  }
+}
+
+// container
+@mixin container($searchWidth) {
+  .search-container {
+    width: 100%;
+    padding-bottom: 50px;
+
+    @include search($searchWidth);
+    @include options();
+  }
+}
+
+.pc {
+  // < 576
+  @media (max-width: 575.98px) {
+    $searchWidth: 500px;
+
+    @include container($searchWidth);
+  }
+
+  // > 576
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    $searchWidth: 500px;
+
+    @include container($searchWidth);
+  }
+
+  // > 768
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    $searchWidth: 700px;
+
+    @include container($searchWidth);
+  }
+
+  // > 992
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    $searchWidth: 900px;
+
+    @include container($searchWidth);
+  }
+
+  // > 1200
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    $searchWidth: 800px;
+
+    @include container($searchWidth);
+  }
+
+  // > 1400
+  @media (min-width: 1400px) {
+    $searchWidth: 1000px;
+
+    @include container($searchWidth);
+  }
+}
+
+.mobile {
+  .search-container {
+    display: none;
+  }
+}

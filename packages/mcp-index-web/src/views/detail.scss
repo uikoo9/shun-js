@@ -1,0 +1,117 @@
+// detail
+@mixin detail($width) {
+  .container {
+    width: $width;
+    margin: 0 auto;
+  }
+
+  .footer {
+    border-top: 1px dashed #333;
+  }
+
+  .detail {
+    width: $width;
+
+    > div {
+      width: 100%;
+    }
+
+    .detail-title {
+      height: 50px;
+      padding-top: 50px;
+
+      color: #333;
+      font-size: 40px;
+      line-height: 50px;
+    }
+
+    .detail-desc {
+      padding-top: 30px;
+      padding-bottom: 50px;
+
+      .detail-desc-item {
+        min-height: 30px;
+
+        color: #333;
+        font-size: 16px;
+        line-height: 30px;
+      }
+    }
+
+    .detail-content {
+      border-top: solid 1px #999;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.pc {
+  // < 576
+  @media (max-width: 575.98px) {
+    $width: 576px;
+    @include detail($width);
+  }
+
+  // > 576
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    $width: 576px;
+    @include detail($width);
+  }
+
+  // > 768
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    $width: 768px;
+    @include detail($width);
+  }
+
+  // > 992
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    $width: 992px;
+    @include detail($width);
+  }
+
+  // > 1200
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    $width: 1200px;
+    @include detail($width);
+  }
+
+  // > 1400
+  @media (min-width: 1400px) {
+    $width: 1400px;
+    @include detail($width);
+  }
+}
+
+.mobile {
+  $width: 16rem;
+  @include detail($width);
+  .container {
+    .header {
+      .logo {
+        font-size: 14px;
+      }
+      .navs > div:nth-last-child(1) {
+        width: 100%;
+      }
+      .navs > div:nth-last-child(2) {
+        display: none;
+      }
+      .navs > div:nth-last-child(3) {
+        display: none;
+      }
+    }
+
+    .detail {
+      width: calc($width - 20px - 20px);
+      padding: 0 20px;
+
+      .detail-content {
+        font-size: 12px;
+      }
+    }
+  }
+}

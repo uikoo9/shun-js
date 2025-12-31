@@ -1,0 +1,99 @@
+// content
+@mixin content($cardWidth) {
+  .content {
+    width: 100%;
+    margin: 0 auto;
+
+    > div {
+      float: left;
+    }
+
+    .card:hover {
+      border: 1px solid #333;
+    }
+
+    .card {
+      width: $cardWidth;
+      height: 200px;
+      padding: 20px;
+      margin-right: 25px;
+      margin-bottom: 25px;
+      border: 1px solid #999;
+      cursor: pointer;
+
+      .title {
+        width: 100%;
+        height: 50px;
+
+        color: #333;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 50px;
+        text-align: center;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .desc {
+        width: 100%;
+        height: 150px;
+
+        color: #333333;
+        font-size: 14px;
+        line-height: 24px;
+
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.pc {
+  // < 576
+  @media (max-width: 575.98px) {
+    $cardWidth: 220px;
+    @include content($cardWidth);
+  }
+
+  // > 576
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    $cardWidth: 220px;
+    @include content($cardWidth);
+  }
+
+  // > 768
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    $cardWidth: 310px;
+    @include content($cardWidth);
+  }
+
+  // > 992
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    $cardWidth: 260px;
+    @include content($cardWidth);
+  }
+
+  // > 1200
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    $cardWidth: 230px;
+    @include content($cardWidth);
+  }
+
+  // > 1400
+  @media (min-width: 1400px) {
+    $cardWidth: 280px;
+    @include content($cardWidth);
+  }
+}
+
+.mobile {
+  $cardWidth: calc(100% - 20px - 20px - 25px - 25px);
+  @include content($cardWidth);
+  .content {
+    .card {
+      margin-left: 25px;
+    }
+  }
+}

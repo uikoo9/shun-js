@@ -1,0 +1,31 @@
+{
+  "name": "@shunjs/mcp-index-web",
+  "private": true,
+  "version": "0.2.2",
+  "sideEffects": [
+    "**/*.scss"
+  ],
+  "scripts": {
+    "analyzer": "qwebpack analyzer ./webpack/qiao-webpack.prod.js",
+    "dev": "qwebpack dev ./webpack/qiao-webpack.dev.js",
+    "build": "rm -rf ../mcp-index-server/static && rm -rf ../mcp-index-server/views && qwebpack build ./webpack/qiao-webpack.prod.js",
+    "upload": "qcos fo ../../configs/mcp-index-web.json ../mcp-index-server/static mcp/static"
+  },
+  "dependencies": {
+    "artalk": "^2.9.1",
+    "qiao-ajax": "^5.2.1",
+    "qiao-data": "^5.2.1",
+    "qiao-json": "^5.1.9",
+    "qiao-ui": "^4.2.6",
+    "qiao.cookie.js": "^3.7.5",
+    "qiao.ls.js": "^3.7.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "^10.1.0",
+    "react-router": "^7.8.1",
+    "react-syntax-highlighter": "^15.6.1",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "zustand": "^5.0.8"
+  }
+}
