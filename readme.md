@@ -27,3 +27,4 @@ shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
 - [@shun-js/aitubiao-server](./packages/aitubiao-server/README.md): 7002-aitubiao.online
 - [@shun-js/mcp-admin-server](./packages/mcp-admin-server/README.md): 7003-mcp-servers.online admin
 - [@shun-js/mcp-index-server](./packages/mcp-index-server/README.md): 7004-mcp-servers.online index
+- [@shun-js/mcp-api-server](./packages/mcp-api-server/README.md): 7005-mcp-servers.online api
