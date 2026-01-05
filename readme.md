@@ -20,6 +20,7 @@ shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
 - [@shun-js/feishu-bot](./packages/feishu-bot/README.md): 8001-飞书机器人模块
 - [@shun-js/sms](./packages/sms/README.md): 8002-短信模块
 - [@shun-js/user](./packages/user/README.md): 8003-用户模块
+- [@shun-js/recommend](./packages/recommend/README.md): 8004-推荐模块
 
 ## 业务模块
 
