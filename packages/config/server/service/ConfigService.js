@@ -1,6 +1,3 @@
-// config
-const config = require('../config.json');
-
 /**
  * config
  * @param {*} req
@@ -12,5 +9,5 @@ exports.config = async (req, res) => {
   const type = req.body.type || 'mp-xiaolouai';
 
   // r
-  res.jsonSuccess('success', config[type]);
+  res.jsonSuccess('success', global.QZ_CONFIG[type]);
 };
