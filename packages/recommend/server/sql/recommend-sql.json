@@ -1,0 +1,6 @@
+{
+  "addRecommend": "insert into t_recommend values(null, ?,?,'0', now())",
+  "listRecommend": "select * from t_recommend where recommend_user_id=? order by id desc",
+  "getRecommend": "select * from t_recommend where recommend_user_id=? and recommend_newuser_id=? and recommend_exchange='0'",
+  "updateRecommend": "update t_recommend set recommend_exchange='1' where id=?"
+}
