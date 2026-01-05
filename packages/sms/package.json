@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/sms",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "sms",
   "keywords": [
     "shun.js",
@@ -21,7 +21,7 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-config": "^0.3.1",
     "@shun-js/shun-service": "^0.3.1",
     "qiao-log": "^5.1.9",
     "qiao-sms": "^5.9.0",

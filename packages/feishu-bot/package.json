@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/feishu-bot",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "feishu bot",
   "keywords": [
     "shun.js",
@@ -22,7 +22,7 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-config": "^0.3.1",
     "qiao-ajax": "^5.2.4",
     "qiao-log": "^5.1.9",
     "qiao-timer": "^5.8.4",

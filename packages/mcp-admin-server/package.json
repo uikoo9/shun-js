@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/mcp-admin-server",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "mcp-servers.online admin server",
   "keywords": [
     "mcp-servers.online"
@@ -21,7 +21,7 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-config": "^0.3.1",
     "qiao-encode": "^5.0.6",
     "qiao-log": "^5.1.9",
     "qiao-mysql": "^5.8.6",

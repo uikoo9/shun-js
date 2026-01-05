@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/mcp-index-server",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "mcp-servers.online index server",
   "keywords": [
     "mcp-servers.online"
@@ -22,7 +22,7 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-config": "^0.3.1",
     "@shun-js/shun-service": "^0.3.1",
     "art-template": "^4.13.4",
     "dayjs": "^1.11.19",

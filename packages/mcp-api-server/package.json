@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/mcp-api-server",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "mcp-servers.online api server",
   "keywords": [
     "mcp-servers.online"
@@ -20,7 +20,7 @@
     "app.js"
   ],
   "dependencies": {
-    "@shun-js/shun-config": "^0.3.0",
+    "@shun-js/shun-config": "^0.3.1",
     "@shun-js/shun-service": "^0.3.1",
     "qiao-log": "^5.1.9",
     "qiao-mysql": "^5.8.6",
