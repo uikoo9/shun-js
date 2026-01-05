@@ -17,10 +17,6 @@ const { parseServerConfig } = require('@shun-js/shun-config');
   options.config = config;
   options.mysql = require('qiao-mysql');
 
-  // options.redis
-  options.redis = require('qiao-redis');
-  options.redisOptions = config.redisOptions;
-
   // options log
   options.log = require('qiao-log');
   options.logOptions = require('./server/log-options.js')();
