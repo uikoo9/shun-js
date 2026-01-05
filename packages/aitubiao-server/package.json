@@ -25,7 +25,7 @@
     "@shun-js/shun-config": "^0.3.0",
     "@shun-js/shun-service": "^0.3.1",
     "qiao-agent": "^0.2.5",
-    "qiao-file": "^5.0.1",
+    "qiao-file": "^5.0.6",
     "qiao-log": "^5.1.9",
     "qiao-rate-limit": "^5.8.8",
     "qiao-redis": "^5.8.9",

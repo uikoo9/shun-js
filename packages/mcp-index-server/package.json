@@ -25,15 +25,15 @@
     "@shun-js/shun-config": "^0.3.0",
     "@shun-js/shun-service": "^0.3.1",
     "art-template": "^4.13.4",
-    "dayjs": "^1.11.13",
-    "qiao-ajax": "^5.2.1",
-    "qiao-file": "^5.0.0",
+    "dayjs": "^1.11.19",
+    "qiao-ajax": "^5.2.4",
+    "qiao-file": "^5.0.6",
     "qiao-log": "^5.1.9",
-    "qiao-mysql": "^5.1.9",
-    "qiao-rate-limit": "^5.7.6",
-    "qiao-redis": "^5.7.8",
-    "qiao-z": "^5.8.2",
-    "qiao-z-service": "^5.8.0"
+    "qiao-mysql": "^5.8.6",
+    "qiao-rate-limit": "^5.8.8",
+    "qiao-redis": "^5.8.9",
+    "qiao-z": "^5.8.9",
+    "qiao-z-service": "^5.8.8"
   },
   "publishConfig": {
     "access": "public",

@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "debug": "^4.4.3",
-    "qiao-file": "^5.0.1"
+    "qiao-file": "^5.0.6"
   },
   "publishConfig": {
     "access": "public",

@@ -1,9 +1,10 @@
 {
-  "name": "@shun-js/mcp-admin-server",
-  "version": "0.3.5",
-  "description": "mcp-servers.online admin server",
+  "name": "@shun-js/cos",
+  "version": "0.3.1",
+  "description": "cos",
   "keywords": [
-    "mcp-servers.online"
+    "shun.js",
+    "cos"
   ],
   "license": "MIT",
   "author": "uikoo9 <uikoo9@qq.com>",
@@ -17,15 +18,13 @@
   },
   "files": [
     "server",
-    "views",
     "app.js"
   ],
   "dependencies": {
     "@shun-js/shun-config": "^0.3.0",
-    "qiao-encode": "^5.0.6",
+    "@shun-js/shun-service": "^0.3.1",
+    "qiao-cos": "^5.0.6",
     "qiao-log": "^5.1.9",
-    "qiao-mysql": "^5.8.6",
-    "qiao-rate-limit": "^5.8.8",
     "qiao-z": "^5.8.9"
   },
   "publishConfig": {

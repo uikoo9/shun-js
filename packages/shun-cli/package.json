@@ -26,7 +26,7 @@
     "debug": "^4.4.3",
     "pm2": "^6.0.14",
     "qiao-cli": "^5.0.0",
-    "qiao-file": "^5.0.1"
+    "qiao-file": "^5.0.6"
   },
   "publishConfig": {
     "access": "public",

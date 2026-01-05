@@ -34,14 +34,14 @@
     "build:mcp-index-web": "npm run webpack -w @shun-js/mcp-index-web && npm run upload -w @shun-js/mcp-index-web"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
     "husky": "^9.1.7",
     "lerna": "^9.0.3",
     "lint-staged": "^16.2.7",
-    "nx": "^22.2.7",
-    "qiao-cos-cli": "^5.0.1",
-    "qiao-project": "^5.0.2",
-    "qiao-webpack": "^5.0.1"
+    "nx": "^22.3.3",
+    "qiao-cos-cli": "^5.0.6",
+    "qiao-project": "^5.0.6",
+    "qiao-webpack": "^5.0.5"
   }
 }
