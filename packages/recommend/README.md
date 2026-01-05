@@ -42,5 +42,17 @@ shunjs start @shun-js/recommend
 ## 请求
 
 ```shell
+# add
+curl --location --request POST 'http://localhost:8004/recommend/add' \
+--data-urlencode 'userId=1' \
+--data-urlencode 'newUserId=2'
 
+# list
+curl --location --request POST 'http://localhost:8004/recommend/list' \
+--data-urlencode 'userId=1'
+
+# change
+curl --location --request POST 'http://localhost:8004/recommend/change' \
+--data-urlencode 'userId=1' \
+--data-urlencode 'newUserId=2'
 ```
