@@ -23,7 +23,7 @@
     "cz": "qpro commitizen",
     "pb": "lerna publish",
     "graph": "nx graph",
-    "update": "qpro ncu u && npm -ws exec -- qpro ncu u",
+    "update": "qpro ncu u && npm --workspaces exec -- qpro ncu u",
     "pkg": "qpro pkg ./packages",
     "dpkg": "qpro pkg ./packages dev",
     "clean": "nx reset",

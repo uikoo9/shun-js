@@ -1,0 +1,3 @@
+{
+  "getAppUpdateVersion": "select * from t_app where app_name=? order by id desc limit 1"
+}
