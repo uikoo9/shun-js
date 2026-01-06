@@ -1,0 +1,35 @@
+// config
+const { parseServerConfig } = require('@shun-js/shun-config');
+
+// init
+(async () => {
+  // config
+  const config = await parseServerConfig(process.argv);
+  if (!config) {
+    console.log('read server config fail');
+    return;
+  }
+
+  // options
+  const options = {};
+
+  // config
+  options.config = config;
+
+  // options cros
+  options.cros = true;
+
+  // options cron
+  options.cron = require('qiao-timer');
+
+  // options log
+  options.log = require('qiao-log');
+  options.logOptions = require('./server/log-options.js')();
+
+  // options checks
+  options.checks = [require('./server/util/check.js').checkAppIdAndKey];
+
+  // start
+  const app = await require('qiao-z')(options);
+  app.listen(config.port);
+})();
