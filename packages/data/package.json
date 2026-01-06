@@ -28,5 +28,9 @@
     "qiao-mysql": "^5.8.6",
     "qiao-timer": "^5.8.4",
     "qiao-z": "^5.8.9"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
