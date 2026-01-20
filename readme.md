@@ -23,6 +23,8 @@ shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
 - [@shun-js/recommend](./packages/recommend/README.md): 8004-推荐模块
 - [@shun-js/cos](./packages/cos/README.md): 8005-COS模块
 - [@shun-js/config](./packages/config/README.md): 8006-config模块
+- [@shun-js/app](./packages/app/README.md): 8007-app模块
+- [@shun-js/data](./packages/data/README.md): 8008-data模块
 
 ## 业务模块
 
