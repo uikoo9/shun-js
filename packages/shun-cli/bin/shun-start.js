@@ -65,6 +65,11 @@ async function startServer(serverName, options) {
   const serverConfigPathIsExists = await isExists(serverConfigPath);
   debug(methodName, 'serverConfigPath', serverConfigPath);
   debug(methodName, 'serverConfigPathIsExists', serverConfigPathIsExists);
+  if (!serverConfigPathIsExists) {
+    console.log(cli.colors.red(`未找到对应配置文件：${serverConfigPath}`));
+    console.log();
+    return;
+  }
 
   // pm2
   try {

@@ -21,6 +21,10 @@
     "views",
     "app.js"
   ],
+  "scripts": {
+    "pack": "cp ./static/index.html ./views/index.html",
+    "upload": "qcos fo ../../configs/aitubiao-web.json ./static aibaiban/static"
+  },
   "dependencies": {
     "@shun-js/shun-config": "^0.3.1",
     "@shun-js/shun-service": "^0.3.1",

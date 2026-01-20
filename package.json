@@ -29,7 +29,9 @@
     "clean": "nx reset",
     "start:feishu-bot": "cd configs && shunjs start @shun-js/feishu-bot",
     "start:feishu-grafana-alert": "cd configs && shunjs start @shun-js/feishu-grafana-alert",
+    "start:aibaiban-server": "cd configs && shunjs start @shun-js/aibaiban-server",
     "build:aitubiao-web": "npm run webpack -w @shun-js/aitubiao-web && npm run upload -w @shun-js/aitubiao-web",
+    "build:aibaiban-web": "npm run pack -w @shun-js/aibaiban-server && npm run upload -w @shun-js/aibaiban-server",
     "build:mcp-admin-web": "npm run webpack -w @shun-js/mcp-admin-web && npm run upload -w @shun-js/mcp-admin-web",
     "build:mcp-index-web": "npm run webpack -w @shun-js/mcp-index-web && npm run upload -w @shun-js/mcp-index-web"
   },

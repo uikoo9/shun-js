@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aitubiao.online/sitemap.xml
+Sitemap: https://aibaiban.com/sitemap.xml

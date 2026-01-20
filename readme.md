@@ -27,7 +27,8 @@ shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
 ## 业务模块
 
 - [@shun-js/feishu-grafana-alert](./packages/feishu-grafana-alert/README.md): 7001-grafana告警的飞书webhook
-- [@shun-js/aitubiao-server](./packages/aitubiao-server/README.md): 7002-aitubiao.online
-- [@shun-js/mcp-admin-server](./packages/mcp-admin-server/README.md): 7003-mcp-servers.online admin
-- [@shun-js/mcp-index-server](./packages/mcp-index-server/README.md): 7004-mcp-servers.online index
-- [@shun-js/mcp-api-server](./packages/mcp-api-server/README.md): 7005-mcp-servers.online api
+- @shun-js/aitubiao-server: 7002-aitubiao.online
+- @shun-js/mcp-admin-server: 7003-mcp-servers.online admin
+- @shun-js/mcp-index-server: 7004-mcp-servers.online index
+- @shun-js/mcp-api-server: 7005-mcp-servers.online api
+- @shun-js/aibaiban-server: 7006-aibaiban.com
