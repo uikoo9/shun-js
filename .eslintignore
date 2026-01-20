@@ -7,5 +7,6 @@ package-lock.json
 # packages
 
 packages/aitubiao-server/static
+packages/aibaiban-server/static
 packages/mcp-admin-server/static
 packages/mcp-index-server/static

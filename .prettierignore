@@ -14,3 +14,4 @@ package-lock.json
 .dockerignore
 Dockerfile
 packages/aitubiao-server/static
+packages/aibaiban-server/static
