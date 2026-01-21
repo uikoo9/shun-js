@@ -10,7 +10,7 @@ const { readFile } = require('qiao-file');
  * @param {*} res
  */
 exports.robots = async (req, res) => {
-  const txtPath = path.resolve(__dirname, '../../../assets/robots.txt');
+  const txtPath = path.resolve(__dirname, '../../assets/robots.txt');
   const txt = await readFile(txtPath);
   res.send(txt);
 };
@@ -21,7 +21,7 @@ exports.robots = async (req, res) => {
  * @param {*} res
  */
 exports.sitemap = async (req, res) => {
-  const sitemapPath = path.resolve(__dirname, '../../../assets/sitemap.xml');
+  const sitemapPath = path.resolve(__dirname, '../../assets/sitemap.xml');
   const sitemap = await readFile(sitemapPath);
   res.send(sitemap);
 };
@@ -32,7 +32,7 @@ exports.sitemap = async (req, res) => {
  * @param {*} res
  */
 exports.bingIndexNow = async (req, res) => {
-  const txtPath = path.resolve(__dirname, '../../../assets/bing.txt');
+  const txtPath = path.resolve(__dirname, '../../assets/bing.txt');
   const txt = await readFile(txtPath);
   res.send(txt);
 };
