@@ -46,11 +46,12 @@ exports.chat = async (req, res) => {
   // go
   try {
     const llmParseIntentRes = await llmParseIntent(userPrompt);
-    req.logger.info(methodName, 'llmParseIntentRes', llmParseIntentRes);
+    const llmParseIntentObj = JSON.parse(llmParseIntentRes);
+    req.logger.info(methodName, 'llmParseIntentObj', llmParseIntentObj);
 
     // r
-    chatResFeishuMsg(req, JSON.stringify(llmParseIntentRes));
-    res.jsonSuccess('success', llmParseIntentRes);
+    chatResFeishuMsg(req, JSON.stringify(llmParseIntentObj));
+    res.jsonSuccess('success', llmParseIntentObj);
   } catch (error) {
     const msg = 'chat error';
     errorFeishuMsg(req, msg);
