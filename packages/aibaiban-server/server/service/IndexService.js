@@ -1,5 +1,5 @@
 // llm
-const { chatWithStreaming } = require('../util/llm.js');
+const { chatWithStreaming } = require('../util/llm-intent.js');
 
 // util
 const { chatFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
@@ -22,13 +22,13 @@ exports.index = async (req, res) => {
 };
 
 /**
- * chat
+ * chatWithStreaming
  * @param {*} req
  * @param {*} res
  * @returns
  */
-exports.chat = async (req, res) => {
-  const methodName = 'chat';
+exports.chatWithStreaming = async (req, res) => {
+  const methodName = 'chatWithStreaming';
 
   // check
   if (!req.body.userPrompt) {

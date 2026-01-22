@@ -21,7 +21,7 @@ const gemini = GeminiVertex({
 let cachedSystemPrompt = null;
 let cachedCompiledSchema = null;
 
-// ==================== JSON Schema 定义（只构建一次）====================
+// ==================== JSON Schema 定义（避免联合类型）====================
 
 const jsonSchema = (() => {
   const DiagramNodeSchema = z.object({
@@ -82,33 +82,38 @@ const jsonSchema = (() => {
     height: z.number().optional().describe('高度'),
   });
 
+  // 注意：freedraws 使用简化格式，避免 tuple 导致的兼容性问题
   const FreedrawElementSchema = z.object({
     id: z.string().describe('手绘元素唯一标识符'),
-    points: z.array(z.tuple([z.number(), z.number()])).describe('路径点坐标数组'),
+    points: z.array(z.number()).describe('路径点坐标数组，格式：[x1,y1,x2,y2,...]'),
     color: z.string().optional().describe('线条颜色'),
     strokeWidth: z.number().optional().describe('线条宽度'),
   });
 
-  const SimplifiedDiagramSchema = z.object({
+  // 统一的响应 Schema（包含图表和错误两种情况）
+  // 通过 type 字段区分：'architecture'|'flowchart'|'sequence'|'custom' = 图表，'error' = 错误
+  return z.object({
+    // 通用字段：type 用于区分响应类型
     type: z
-      .enum(['architecture', 'flowchart', 'sequence', 'custom'])
-      .describe('图表类型：architecture=架构图，flowchart=流程图，sequence=时序图，custom=自定义'),
+      .enum(['architecture', 'flowchart', 'sequence', 'custom', 'error'])
+      .describe('响应类型：architecture/flowchart/sequence/custom=图表类型，error=错误响应'),
+
+    // ========== 图表相关字段（当 type != error 时使用）==========
     title: z.string().optional().describe('图表标题'),
-    nodes: z.array(DiagramNodeSchema).describe('节点列表，至少包含一个节点'),
-    connections: z.array(DiagramConnectionSchema).describe('连接关系列表'),
+    nodes: z.array(DiagramNodeSchema).optional().describe('节点列表'),
+    connections: z.array(DiagramConnectionSchema).optional().describe('连接关系列表'),
     annotations: z.array(TextAnnotationSchema).optional().describe('独立文本标注列表（可选）'),
     frames: z.array(FrameSchema).optional().describe('分组框架列表（可选）'),
     images: z.array(ImageElementSchema).optional().describe('图片元素列表（可选）'),
     freedraws: z.array(FreedrawElementSchema).optional().describe('手绘元素列表（可选）'),
-  });
 
-  const DiagramErrorSchema = z.object({
-    type: z.literal('error').describe('固定值：error'),
-    error: z.enum(['NON_DRAWING_REQUEST', 'INVALID_REQUEST', 'UNKNOWN_ERROR']).describe('错误类型'),
-    message: z.string().describe('错误提示消息，必须使用固定的友好提示文本'),
+    // ========== 错误相关字段（当 type = error 时使用）==========
+    error: z
+      .enum(['NON_DRAWING_REQUEST', 'INVALID_REQUEST', 'UNKNOWN_ERROR'])
+      .optional()
+      .describe('错误类型（仅当 type=error 时需要）'),
+    message: z.string().optional().describe('错误提示消息（仅当 type=error 时需要）'),
   });
-
-  return z.discriminatedUnion('type', [SimplifiedDiagramSchema, DiagramErrorSchema]);
 })();
 
 // ==================== 懒加载函数 ====================
@@ -129,10 +134,21 @@ async function getSystemPrompt() {
  */
 function getCompiledSchema() {
   if (!cachedCompiledSchema) {
-    cachedCompiledSchema = zodToJsonSchema(jsonSchema, {
+    const fullSchema = zodToJsonSchema(jsonSchema, {
       name: 'AIResponse',
       $refStrategy: 'none',
     });
+
+    // 关键修复：Gemini 不支持顶层 $ref，直接使用 definitions 中的定义
+    if (fullSchema.definitions && fullSchema.definitions.AIResponse) {
+      cachedCompiledSchema = fullSchema.definitions.AIResponse;
+    } else if (fullSchema.$ref) {
+      // 如果顶层是 $ref，解析它
+      const refName = fullSchema.$ref.split('/').pop();
+      cachedCompiledSchema = fullSchema.definitions[refName];
+    } else {
+      cachedCompiledSchema = fullSchema;
+    }
   }
   return cachedCompiledSchema;
 }
@@ -148,6 +164,8 @@ exports.chatWithStreaming = async (userPrompts, callbackOptions) => {
   // 懒加载：第一次使用时加载并缓存
   const systemPrompt = await getSystemPrompt();
   const compiledSchema = getCompiledSchema();
+  console.log('compiledSchema');
+  console.log(JSON.stringify(compiledSchema));
 
   // chat options
   const chatOptions = {
