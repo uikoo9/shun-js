@@ -52,7 +52,7 @@ exports.chatFeishuMsg = (req) => {
   // msg
   const uaJson = JSON.stringify(req.useragent || {});
   const userid = req.headers.userid;
-  const prompt = req.body.userPrompt;
+  const prompt = decodeURIComponent(req.body.userPrompt);
 
   const msg = `【通知】/chat被访问\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}`;
   exports.feishuMsg(msg);
