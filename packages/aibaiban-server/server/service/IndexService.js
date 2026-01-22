@@ -52,7 +52,7 @@ exports.chat = async (req, res) => {
     },
     firstContentCallback: () => {
       req.logger.info(methodName, 'firstContentCallback');
-      res.streaming('First chunk received!');
+      // res.streaming('First chunk received!');
     },
     contentCallback: (content) => {
       req.logger.info(methodName, 'contentCallback', content);
