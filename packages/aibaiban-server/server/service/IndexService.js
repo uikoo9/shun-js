@@ -44,32 +44,28 @@ exports.chat = async (req, res) => {
   chatFeishuMsg(req);
 
   // go
-  try {
-    const userPrompts = [{ text: userPrompt }];
-    chatWithStreaming(userPrompts, {
-      beginCallback: () => {
-        console.log('Stream started...');
-      },
-      firstContentCallback: () => {
-        console.log('First chunk received!');
-      },
-      contentCallback: (content) => {
-        process.stdout.write(content);
-      },
-      endCallback: () => {
-        console.log('\nStream ended.');
-      },
-      errorCallback: (error) => {
-        console.error('Error:', error);
-      },
-    });
-
-    // r
-    res.jsonSuccess('success');
-  } catch (error) {
-    const msg = 'chat error';
-    errorFeishuMsg(req, msg);
-    req.logger.error(methodName, msg, error);
-    res.jsonFail(msg);
-  }
+  const userPrompts = [{ text: userPrompt }];
+  chatWithStreaming(userPrompts, {
+    beginCallback: () => {
+      req.logger.info(methodName, 'beginCallback');
+      res.streamingStart();
+    },
+    firstContentCallback: () => {
+      req.logger.info(methodName, 'firstContentCallback');
+      res.streaming('First chunk received!');
+    },
+    contentCallback: (content) => {
+      req.logger.info(methodName, 'contentCallback', content);
+      res.streaming(content);
+    },
+    endCallback: () => {
+      req.logger.info(methodName, 'endCallback');
+      res.streamingEnd();
+    },
+    errorCallback: (error) => {
+      errorFeishuMsg(req, 'errorCallback');
+      req.logger.info(methodName, 'errorCallback', error);
+      res.streamingEnd();
+    },
+  });
 };
