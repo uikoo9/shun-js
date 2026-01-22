@@ -35,7 +35,8 @@
     "qiao-z": "^5.8.9",
     "qiao-z-nuser": "^5.8.8",
     "qiao-z-service": "^5.8.8",
-    "qiao-z-sms": "^5.8.8"
+    "qiao-z-sms": "^5.8.8",
+    "viho-llm": "^0.2.3"
   },
   "publishConfig": {
     "access": "public",

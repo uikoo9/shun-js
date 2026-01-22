@@ -41,11 +41,11 @@ exports.errorFeishuMsg = (req, msg) => {
 };
 
 /**
- * chartFeishuMsg
+ * chatFeishuMsg
  * @param {*} req
  * @returns
  */
-exports.chartFeishuMsg = (req) => {
+exports.chatFeishuMsg = (req) => {
   // check
   if (isBot(req)) return;
 
@@ -54,16 +54,16 @@ exports.chartFeishuMsg = (req) => {
   const userid = req.headers.userid;
   const prompt = req.body.userPrompt;
 
-  const msg = `【通知】/chart被访问\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}`;
+  const msg = `【通知】/chat被访问\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}`;
   exports.feishuMsg(msg);
 };
 
 /**
- * chartResFeishuMsg
+ * chatResFeishuMsg
  * @param {*} req
  * @returns
  */
-exports.chartResFeishuMsg = (req, chartRes) => {
+exports.chatResFeishuMsg = (req, chatRes) => {
   // check
   if (isBot(req)) return;
 
@@ -72,6 +72,6 @@ exports.chartResFeishuMsg = (req, chartRes) => {
   const userid = req.headers.userid;
   const prompt = req.body.userPrompt;
 
-  const msg = `【通知】/chart生成成功\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}\nres:${chartRes}`;
+  const msg = `【通知】/chat生成成功\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}\nres:${chatRes}`;
   exports.feishuMsg(msg);
 };

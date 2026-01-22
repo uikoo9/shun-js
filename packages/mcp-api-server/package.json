@@ -26,8 +26,7 @@
     "qiao-mysql": "^5.8.6",
     "qiao-rate-limit": "^5.8.8",
     "qiao-redis": "^5.8.9",
-    "qiao-z": "^5.8.9",
-    "qiao-z-service": "^5.8.8"
+    "qiao-z": "^5.8.9"
   },
   "publishConfig": {
     "access": "public",

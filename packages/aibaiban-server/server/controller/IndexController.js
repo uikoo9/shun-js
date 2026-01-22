@@ -9,4 +9,9 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
     service.index(req, res);
   });
+
+  // chat
+  app.post('/chat', (req, res) => {
+    service.chat(req, res);
+  });
 };
