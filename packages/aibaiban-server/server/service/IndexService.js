@@ -1,8 +1,8 @@
 // llm
-const { chatWithStreaming } = require('../util/llm-intent.js');
+const { llmParseIntent } = require('../util/llm');
 
 // util
-const { chatFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
+const { chatFeishuMsg, chatResFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
 
 /**
  * index
@@ -22,13 +22,13 @@ exports.index = async (req, res) => {
 };
 
 /**
- * chatWithStreaming
+ * chat
  * @param {*} req
  * @param {*} res
  * @returns
  */
-exports.chatWithStreaming = async (req, res) => {
-  const methodName = 'chatWithStreaming';
+exports.chat = async (req, res) => {
+  const methodName = 'chat';
 
   // check
   if (!req.body.userPrompt) {
@@ -44,28 +44,63 @@ exports.chatWithStreaming = async (req, res) => {
   chatFeishuMsg(req);
 
   // go
-  const userPrompts = [{ text: userPrompt }];
-  chatWithStreaming(userPrompts, {
-    beginCallback: () => {
-      req.logger.info(methodName, 'beginCallback');
-      res.streamingStart();
-    },
-    firstContentCallback: () => {
-      req.logger.info(methodName, 'firstContentCallback');
-      // res.streaming('First chunk received!');
-    },
-    contentCallback: (content) => {
-      req.logger.info(methodName, 'contentCallback', content);
-      res.streaming(content);
-    },
-    endCallback: () => {
-      req.logger.info(methodName, 'endCallback');
-      res.streamingEnd();
-    },
-    errorCallback: (error) => {
-      errorFeishuMsg(req, 'errorCallback');
-      req.logger.info(methodName, 'errorCallback', error);
-      res.streamingEnd();
-    },
-  });
+  try {
+    const llmParseIntentRes = await llmParseIntent(userPrompt);
+    req.logger.info(methodName, 'llmParseIntentRes', llmParseIntentRes);
+
+    // r
+    chatResFeishuMsg(req, JSON.stringify(llmParseIntentRes));
+    res.jsonSuccess('success', llmParseIntentRes);
+  } catch (error) {
+    const msg = 'chat error';
+    errorFeishuMsg(req, msg);
+    req.logger.error(methodName, msg, error);
+    res.jsonFail(msg);
+  }
+};
+
+/**
+ * chatWithStreaming
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+exports.chatWithStreaming = async () => {
+  // const methodName = 'chatWithStreaming';
+  // // check
+  // if (!req.body.userPrompt) {
+  //   const msg = 'need userPrompt';
+  //   req.logger.error(methodName, msg);
+  //   res.jsonFail(msg);
+  //   return;
+  // }
+  // // const
+  // const userPrompt = decodeURIComponent(req.body.userPrompt);
+  // req.logger.info(methodName, 'userPrompt', userPrompt);
+  // chatFeishuMsg(req);
+  // // go
+  // const userPrompts = [{ text: userPrompt }];
+  // chatWithStreaming(userPrompts, {
+  //   beginCallback: () => {
+  //     req.logger.info(methodName, 'beginCallback');
+  //     res.streamingStart();
+  //   },
+  //   firstContentCallback: () => {
+  //     req.logger.info(methodName, 'firstContentCallback');
+  //     // res.streaming('First chunk received!');
+  //   },
+  //   contentCallback: (content) => {
+  //     req.logger.info(methodName, 'contentCallback', content);
+  //     res.streaming(content);
+  //   },
+  //   endCallback: () => {
+  //     req.logger.info(methodName, 'endCallback');
+  //     res.streamingEnd();
+  //   },
+  //   errorCallback: (error) => {
+  //     errorFeishuMsg(req, 'errorCallback');
+  //     req.logger.info(methodName, 'errorCallback', error);
+  //     res.streamingEnd();
+  //   },
+  // });
 };
