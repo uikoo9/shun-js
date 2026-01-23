@@ -83,9 +83,11 @@ const drawJsonSchema = (() => {
     id: z.string().describe('节点唯一标识符，使用驼峰命名法，如 userService, mysqlDB'),
     label: z.string().describe('节点显示文本，支持 \\n 换行'),
     type: z
-      .enum(['rectangle', 'ellipse', 'diamond', 'hexagon', 'cylinder', 'cloud'])
+      .enum(['rectangle', 'ellipse', 'diamond'])
       .optional()
-      .describe('形状类型，默认 rectangle'),
+      .describe(
+        '形状类型：rectangle=矩形（组件/服务）, ellipse=椭圆（数据库/云）, diamond=菱形（判断/中间件），默认 rectangle',
+      ),
     color: z
       .enum(['blue', 'green', 'purple', 'orange', 'red', 'gray', 'yellow', 'pink', 'black'])
       .optional()

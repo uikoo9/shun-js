@@ -16,14 +16,18 @@
 
 你可以创建以下类型的形状节点：
 
-| 类型        | 说明           | 适用场景                      |
-| ----------- | -------------- | ----------------------------- |
-| `rectangle` | 矩形（带圆角） | 系统模块、功能块、组件、服务  |
-| `ellipse`   | 椭圆/圆形      | 数据库、存储、开始/结束、状态 |
-| `diamond`   | 菱形           | 判断节点、决策点、网关        |
-| `hexagon`   | 六边形         | 数据处理、转换、中间件        |
-| `cylinder`  | 圆柱体         | 数据库、数据仓库、持久化      |
-| `cloud`     | 云形           | 云服务、外部服务、API         |
+| 类型        | 说明           | 适用场景                                       |
+| ----------- | -------------- | ---------------------------------------------- |
+| `rectangle` | 矩形（带圆角） | 系统模块、功能块、组件、服务、外部服务、API    |
+| `ellipse`   | 椭圆/圆形      | 数据库、存储、开始/结束、状态、云服务          |
+| `diamond`   | 菱形           | 判断节点、决策点、网关、数据处理、转换、中间件 |
+
+**重要提示**：
+
+- 只使用这三种类型：`rectangle`、`ellipse`、`diamond`
+- 数据库、数据仓库、持久化 → 使用 `ellipse`
+- 数据处理、转换、中间件、缓存 → 使用 `diamond`
+- 云服务、外部服务 → 使用 `rectangle`
 
 #### 连接关系（Connections）
 
@@ -343,7 +347,7 @@
     {
       "id": "cdn",
       "label": "CDN\n静态资源",
-      "type": "cloud",
+      "type": "rectangle",
       "color": "red"
     },
     {
@@ -373,7 +377,7 @@
     {
       "id": "mysql",
       "label": "MySQL\n数据库",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
@@ -454,7 +458,7 @@
     {
       "id": "serviceDiscovery",
       "label": "服务发现\nConsul/Eureka",
-      "type": "hexagon",
+      "type": "diamond",
       "color": "orange"
     },
     {
@@ -484,31 +488,31 @@
     {
       "id": "messageQueue",
       "label": "消息队列\nRabbitMQ/Kafka",
-      "type": "hexagon",
+      "type": "diamond",
       "color": "orange"
     },
     {
       "id": "db1",
       "label": "User DB",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
       "id": "db2",
       "label": "Order DB",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
       "id": "db3",
       "label": "Product DB",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
       "id": "monitoring",
       "label": "监控\nPrometheus",
-      "type": "cloud",
+      "type": "rectangle",
       "color": "red"
     }
   ],
@@ -598,7 +602,7 @@
     {
       "id": "database",
       "label": "数据库",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     }
   ],
@@ -697,9 +701,9 @@ interface SimplifiedDiagram {
 interface DiagramNode {
   id: string; // 唯一标识符
   label: string; // 显示文本（支持 \n 换行）
-  type?: 'rectangle' | 'ellipse' | 'diamond' | 'hexagon' | 'cylinder' | 'cloud';
+  type?: 'rectangle' | 'ellipse' | 'diamond';
   color?: 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'gray' | 'yellow' | 'pink' | 'black';
-  // 可选的位置和尺寸（不指定则自动布局）
+  // 可选的位置和尺寸（��指定则自动布局）
   x?: number;
   y?: number;
   width?: number;
@@ -794,13 +798,13 @@ interface FreedrawElement {
     {
       "id": "cdn",
       "label": "CDN",
-      "type": "cloud",
+      "type": "rectangle",
       "color": "red"
     },
     {
       "id": "loadBalancer",
       "label": "负载均衡\nNginx",
-      "type": "hexagon",
+      "type": "diamond",
       "color": "orange"
     },
     {
@@ -842,13 +846,13 @@ interface FreedrawElement {
     {
       "id": "mysqlMaster",
       "label": "MySQL主库",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
       "id": "mysqlSlave",
       "label": "MySQL从库",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
@@ -860,19 +864,19 @@ interface FreedrawElement {
     {
       "id": "elasticsearch",
       "label": "Elasticsearch\n搜索引擎",
-      "type": "cylinder",
+      "type": "ellipse",
       "color": "purple"
     },
     {
       "id": "messageQueue",
       "label": "消息队列\nKafka",
-      "type": "hexagon",
+      "type": "diamond",
       "color": "orange"
     },
     {
       "id": "ossStorage",
       "label": "对象存储\nOSS",
-      "type": "cloud",
+      "type": "rectangle",
       "color": "red"
     }
   ],
@@ -999,9 +1003,9 @@ interface FreedrawElement {
 ### 节点类型速查
 
 - 流程：rectangle, diamond, ellipse
-- 数据：cylinder, ellipse
-- 处理：hexagon, rectangle
-- 外部：cloud
+- 数据：ellipse
+- 处理：diamond, rectangle
+- 外部：rectangle
 - 判断：diamond
 
 ### 连接类型速查
@@ -1013,11 +1017,11 @@ interface FreedrawElement {
 
 ### 颜色速查
 
-- 蓝色：前端、用户
-- 绿色：后端、服务
-- 紫色：数据库、存储
-- 橙色：中间件、缓存
-- 红色：外部、告警
+- 蓝色：前端、用户、UI
+- 绿色：后端、服务、处理逻辑
+- 紫色：数据库、存储、持久化
+- 橙色：中间件、缓存、队列、网关
+- 红色：外部服务、告警、CDN
 - 灰色：中性、说明
 
 ---
