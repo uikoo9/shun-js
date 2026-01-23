@@ -1,5 +1,5 @@
 // llm
-const { llmParseIntent } = require('../util/llm.js');
+const { llmParseIntent, llmGetDrawJson } = require('../util/llm.js');
 
 // util
 const { chatFeishuMsg, chatResFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
@@ -67,15 +67,15 @@ exports.draw = async (req, res) => {
 
   // go
   try {
-    const llmParseIntentRes = await llmParseIntent(userPrompt);
-    const llmParseIntentObj = JSON.parse(llmParseIntentRes);
-    req.logger.info(methodName, 'llmParseIntentObj', llmParseIntentObj);
+    const llmGetDrawJsonRes = await llmGetDrawJson(userPrompt);
+    const llmGetDrawJsonObj = JSON.parse(llmGetDrawJsonRes);
+    req.logger.info(methodName, 'llmGetDrawJsonObj', llmGetDrawJsonObj);
 
     // r
-    chatResFeishuMsg(req, JSON.stringify(llmParseIntentObj));
-    res.jsonSuccess('success', llmParseIntentObj);
+    chatResFeishuMsg(req, JSON.stringify(llmGetDrawJsonObj));
+    res.jsonSuccess('success', llmGetDrawJsonObj);
   } catch (error) {
-    const msg = 'parse intent error';
+    const msg = 'draw json error';
     errorFeishuMsg(req, msg);
     req.logger.error(methodName, msg, error);
     res.jsonFail(msg);
