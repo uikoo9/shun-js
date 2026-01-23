@@ -11,7 +11,7 @@ module.exports = (app) => {
   });
 
   //
-  app.post('/chat-streaming', (req, res) => {
-    service.chatWithStreaming(req, res);
+  app.post('/draw', (req, res) => {
+    service.draw(req, res);
   });
 };
