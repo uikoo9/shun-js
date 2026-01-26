@@ -22,7 +22,7 @@
     "app.js"
   ],
   "scripts": {
-    "pack": "cp ./static/index.html ./views/index.html",
+    "pack": "cp ./static/*.html ./views",
     "upload": "qcos fo ../../configs/aitubiao-web.json ./static aibaiban/static"
   },
   "dependencies": {
