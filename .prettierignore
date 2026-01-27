@@ -15,3 +15,4 @@ package-lock.json
 Dockerfile
 packages/aitubiao-server/static
 packages/aibaiban-server/static
+packages/remotion-server/static
