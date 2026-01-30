@@ -11,7 +11,7 @@ exports.feishuMsg = (msg) => {
   feishuBot({
     url: global.QZ_CONFIG.feishu.url,
     feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
-    feishuMsg: msg,
+    feishuMsg: `【通知】${msg}`,
   });
 };
 

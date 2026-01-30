@@ -11,6 +11,51 @@ const Logger = require('qiao-log');
 const logOptions = require('../log-options.js')();
 const logger = Logger(logOptions);
 
+// 浏览器配置 - 使用固定的全局路径，避免每次重新下载
+const BROWSER_EXECUTABLE_PATH = path.join(
+  '/home/ubuntu/remotions/browser',
+  'chrome-headless-shell',
+  'linux-arm64',
+  'chrome-headless-shell-linux-arm64',
+  'headless_shell',
+);
+
+/**
+ * 初始化浏览器 - 如果全局浏览器不存在，从 node_modules 复制
+ */
+function ensureBrowserExists() {
+  const methodName = 'ensureBrowserExists';
+
+  // 如果全局浏览器已存在，直接返回
+  if (fs.existsSync(BROWSER_EXECUTABLE_PATH)) {
+    logger.info(methodName, 'Browser already exists at:', BROWSER_EXECUTABLE_PATH);
+    return;
+  }
+
+  logger.info(methodName, 'Global browser not found, attempting to copy from node_modules...');
+
+  // 查找 node_modules 中的浏览器
+  const nodeModulesBrowserPath = path.join(__dirname, '..', '..', 'node_modules', '.remotion', 'chrome-headless-shell');
+
+  if (fs.existsSync(nodeModulesBrowserPath)) {
+    // 创建目标目录
+    const globalBrowserDir = path.join('/home/ubuntu/remotions/browser');
+    fs.mkdirSync(globalBrowserDir, { recursive: true });
+
+    // 复制浏览器文件
+    logger.info(methodName, 'Copying browser from:', nodeModulesBrowserPath);
+    logger.info(methodName, 'Copying browser to:', globalBrowserDir);
+
+    fs.cpSync(nodeModulesBrowserPath, path.join(globalBrowserDir, 'chrome-headless-shell'), {
+      recursive: true,
+    });
+
+    logger.info(methodName, 'Browser copied successfully to:', BROWSER_EXECUTABLE_PATH);
+  } else {
+    logger.warn(methodName, 'Browser not found in node_modules, will download on first use');
+  }
+}
+
 /**
  * 渲染 Remotion 视频
  * @param {Object} options
@@ -28,6 +73,9 @@ exports.renderVideo = async ({ sourceCode, outputPath, width, height, fps }) => 
   const entryPoint = path.join(tempDir, 'src', 'Root.jsx');
 
   try {
+    // 0. 确保浏览器存在（首次运行时自动复制到全局目录）
+    ensureBrowserExists();
+
     // 1. 创建临时项目结构
     fs.mkdirSync(path.join(tempDir, 'src'), { recursive: true });
 
@@ -68,6 +116,7 @@ module.exports = {
       serveUrl: bundleLocation,
       id: 'MyComposition', // 默认 composition ID
       inputProps: {},
+      browserExecutable: fs.existsSync(BROWSER_EXECUTABLE_PATH) ? BROWSER_EXECUTABLE_PATH : undefined,
     });
 
     // 7. 渲染视频
@@ -84,6 +133,7 @@ module.exports = {
       codec: 'h264',
       outputLocation: outputPath,
       inputProps: {},
+      browserExecutable: fs.existsSync(BROWSER_EXECUTABLE_PATH) ? BROWSER_EXECUTABLE_PATH : undefined,
       onProgress: ({ progress }) => {
         if (progress % 0.1 < 0.01) {
           // 每10%打印一次
