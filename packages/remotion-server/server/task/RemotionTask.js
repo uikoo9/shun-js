@@ -1,5 +1,5 @@
-// model
-const { fetchPendingWorks } = require('../model/RemotionModel.js');
+// service
+const { genVideo } = require('../service/RemotionService.js');
 
 // logger
 const Logger = require('qiao-log');
@@ -9,20 +9,18 @@ const logger = Logger(logOptions);
 // RemotionTask.js
 exports.runAndInit = true;
 exports.time = '* 1 * * *';
+
+// tick
+let start = false;
 exports.tick = async () => {
-  await genRemotionVideo();
+  logger.info('start', start);
+  if (start) return;
+
+  start = true;
+  logger.info('start', start);
+
+  await genVideo();
+
+  start = false;
+  logger.info('start', start);
 };
-
-// gen remotion video
-async function genRemotionVideo() {
-  const methodName = 'genRemotionVideo';
-
-  // go
-  logger.info(methodName, 'start');
-
-  const rows = await fetchPendingWorks();
-  console.log(rows);
-
-  // end
-  logger.info(methodName, 'end');
-}
