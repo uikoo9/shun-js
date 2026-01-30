@@ -24,7 +24,7 @@ exports.renderVideo = async ({ sourceCode, outputPath, width, height, fps }) => 
   const methodName = 'renderVideo';
 
   // const
-  const tempDir = path.join(__dirname, 'temp', Date.now().toString());
+  const tempDir = path.join('/tmp', 'remotion-render', Date.now().toString());
   const entryPoint = path.join(tempDir, 'src', 'Root.jsx');
 
   try {
@@ -41,19 +41,28 @@ exports.renderVideo = async ({ sourceCode, outputPath, width, height, fps }) => 
       version: '1.0.0',
       dependencies: {
         react: '^18.2.0',
+        'react-dom': '^18.2.0',
         remotion: '^4.0.0',
       },
     };
     fs.writeFileSync(path.join(tempDir, 'package.json'), JSON.stringify(packageJson, null, 2));
 
-    // 4. Bundle 代码
+    // 4. 创建 remotion.config.js (可选但推荐)
+    const remotionConfig = `
+module.exports = {
+  // Remotion 配置
+};
+`;
+    fs.writeFileSync(path.join(tempDir, 'remotion.config.js'), remotionConfig);
+
+    // 5. Bundle 代码
     logger.info(methodName, 'Bundling code...');
     const bundleLocation = await bundle({
       entryPoint,
       webpackOverride: (config) => config,
     });
 
-    // 5. 获取 composition
+    // 6. 获取 composition
     logger.info(methodName, 'Getting composition...');
     const composition = await selectComposition({
       serveUrl: bundleLocation,
@@ -61,7 +70,7 @@ exports.renderVideo = async ({ sourceCode, outputPath, width, height, fps }) => 
       inputProps: {},
     });
 
-    // 6. 渲染视频
+    // 7. 渲染视频
     logger.info(methodName, 'Rendering frames...');
     await renderMedia({
       composition: {
@@ -98,13 +107,13 @@ exports.renderVideo = async ({ sourceCode, outputPath, width, height, fps }) => 
 function wrapUserCode(sourceCode) {
   return `
 import React from 'react';
-import { Composition, AbsoluteFill, useCurrentFrame, interpolate, useVideoConfig } from 'remotion';
+import { Composition, registerRoot, AbsoluteFill, useCurrentFrame, interpolate, useVideoConfig } from 'remotion';
 
 // 用户代码
 ${sourceCode}
 
 // Root 组件 - Remotion 入口
-export const RemotionRoot = () => {
+const RemotionRoot = () => {
   return (
     <>
       <Composition
@@ -118,5 +127,8 @@ export const RemotionRoot = () => {
     </>
   );
 };
+
+// 注册 Root 组件（Remotion 4.x 要求）
+registerRoot(RemotionRoot);
 `;
 }

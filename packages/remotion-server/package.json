@@ -23,7 +23,6 @@
     "@shun-js/shun-config": "^0.3.1",
     "@shun-js/shun-service": "^0.3.1",
     "@supabase/supabase-js": "^2.93.3",
-    "qiao-file": "^5.0.6",
     "qiao-log": "^5.1.9",
     "qiao-timer": "^5.8.4",
     "qiao-z": "^5.8.9"

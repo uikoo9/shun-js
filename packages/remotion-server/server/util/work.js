@@ -11,6 +11,9 @@ const { uploadToR2 } = require('./uploader.js');
 // model
 const { updateRenderStatus } = require('../model/RemotionModel.js');
 
+// feishu
+const { feishuMsg, errorFeishuMsg } = require('../util/feishu.js');
+
 // logger
 const Logger = require('qiao-log');
 const logOptions = require('../log-options.js')();
@@ -26,6 +29,7 @@ exports.processWork = async (work) => {
   // const
   const workId = work.id;
   const outputPath = path.join(global.QZ_CONFIG.OUTPUT_DIR, `${workId}.mp4`);
+  feishuMsg(`${workId} start`);
   logger.info(methodName, `\n[${new Date().toISOString()}] Processing work: ${workId}`);
   logger.info(methodName, `Title: ${work.title}`);
   logger.info(methodName, `Status: ${work.status}, Render Status: ${work.render_status}`);
@@ -40,7 +44,7 @@ exports.processWork = async (work) => {
       height: work.height || 1080,
       fps: work.fps || 30,
     });
-
+    feishuMsg(`${workId} render ok`);
     logger.info(methodName, 'Video rendered successfully');
 
     // 2. 上传到 R2
@@ -49,7 +53,7 @@ exports.processWork = async (work) => {
       filePath: outputPath,
       workId: workId,
     });
-
+    feishuMsg(`${workId} upload ok, ${videoUrl}`);
     logger.info(methodName, 'Video uploaded:', videoUrl);
 
     // 3. 获取视频信息
@@ -63,13 +67,15 @@ exports.processWork = async (work) => {
       duration_in_frames: durationInFrames,
       duration_seconds: durationInFrames / (work.fps || 30),
     });
-
+    feishuMsg(`${workId} db ok`);
     logger.info(methodName, `✅ Work ${workId} completed successfully`);
     logger.info(methodName, `   Status: ${work.status}, Render Status: completed`);
 
     // 5. 清理本地文件
     fs.unlinkSync(outputPath);
+    feishuMsg(`${workId} clear ok`);
   } catch (error) {
+    errorFeishuMsg(`${workId} \n ${error}`);
     logger.error(methodName, `❌ Error processing work ${workId}:`, error);
 
     // 更新为渲染失败状态

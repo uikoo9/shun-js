@@ -20,7 +20,6 @@ exports.genVideo = async () => {
 
   // rows
   const rows = await fetchPendingWorks();
-  logger.info(methodName, 'rows', rows);
   if (!rows || !rows.length) return;
 
   // work
