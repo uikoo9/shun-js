@@ -16,6 +16,9 @@ const { parseServerConfig } = require('@shun-js/shun-config');
   // options config
   options.config = config;
 
+  // options cron
+  options.cron = require('qiao-timer');
+
   // options log
   options.log = require('qiao-log');
   options.logOptions = require('./server/log-options.js')();
