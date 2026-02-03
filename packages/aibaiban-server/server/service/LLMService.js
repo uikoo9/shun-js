@@ -1,7 +1,7 @@
 // llm
-const { llmParseIntent, llmGetDrawJson } = require('../util/llm-v4.js');
+const { llmParseIntent } = require('../util/llm-intent.js');
 
-// tool calling
+// structured json output
 const { generateFlowchartWithTools } = require('../util/llm-toolcall.js');
 
 // util
@@ -47,46 +47,7 @@ exports.intent = async (req, res) => {
 };
 
 /**
- * draw
- * @param {*} req
- * @param {*} res
- * @returns
- */
-exports.draw = async (req, res) => {
-  const methodName = 'draw';
-
-  // check
-  if (!req.body.userPrompt) {
-    const msg = 'need userPrompt';
-    req.logger.error(methodName, msg);
-    res.jsonFail(msg);
-    return;
-  }
-
-  // const
-  const userPrompt = decodeURIComponent(req.body.userPrompt);
-  req.logger.info(methodName, 'userPrompt', userPrompt);
-  chatFeishuMsg(req);
-
-  // go
-  try {
-    const llmGetDrawJsonRes = await llmGetDrawJson(userPrompt);
-    const llmGetDrawJsonObj = JSON.parse(llmGetDrawJsonRes);
-    req.logger.info(methodName, 'llmGetDrawJsonObj', llmGetDrawJsonObj);
-
-    // r
-    chatResFeishuMsg(req, JSON.stringify(llmGetDrawJsonObj));
-    res.jsonSuccess('success', llmGetDrawJsonObj);
-  } catch (error) {
-    const msg = 'draw json error';
-    errorFeishuMsg(req, msg);
-    req.logger.error(methodName, msg, error);
-    res.jsonFail(msg);
-  }
-};
-
-/**
- * drawWithTools - 使用 Tool Calling 生成流程图
+ * drawWithTools - 使用结构化 JSON 输出生成流程图
  * @param {*} req
  * @param {*} res
  * @returns
