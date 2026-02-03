@@ -89,129 +89,43 @@
         ]
       }
     </script>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      /* 卡片悬停效果 */
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-      .card-hover:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      /* 渐变背景 */
-      .gradient-1 {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      }
-      .gradient-2 {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      }
-      .gradient-3 {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      }
-      .gradient-4 {
-        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-      }
-      .gradient-5 {
-        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-      }
-    </style>
+    <script
+      type="module"
+      crossorigin
+      src="https://static-small.vincentqiao.com/aibaiban/static/index-DDgJmsny.js"
+    ></script>
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="https://static-small.vincentqiao.com/aibaiban/static/chunks/react-vendor-3yn_rB-k.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="https://static-small.vincentqiao.com/aibaiban/static/chunks/antd-base-DsOgKHDt.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="https://static-small.vincentqiao.com/aibaiban/static/chunks/antd-icons-CdlvvYvH.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="https://static-small.vincentqiao.com/aibaiban/static/chunks/antd-x-BIAsZ6s9.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="https://static-small.vincentqiao.com/aibaiban/static/chunks/excalidraw-DGFFb3CZ.js"
+    />
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="https://static-small.vincentqiao.com/aibaiban/static/styles/index-Cdp-xARm.css"
+    />
   </head>
-  <body class="bg-gray-50">
-    <!-- Hero Section -->
-    <div class="min-h-[50vh] flex items-center justify-center py-16">
-      <div class="max-w-7xl mx-auto px-4 w-full">
-        <div class="text-center">
-          <div class="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-8">
-            ✨ 新一代 AI 白板工具
-          </div>
-          <h1 class="text-5xl sm:text-7xl font-black text-gray-900 mb-10">AI 白板</h1>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-12">用自然语言生成专业图表，让团队协作更简单</p>
-          <a
-            href="/board"
-            class="inline-block px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 transition-all hover:scale-105"
-          >
-            免费开始 →
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Content Section -->
-    <div class="max-w-7xl mx-auto px-4 py-16">
-      <!-- Bento Grid Layout -->
-      <div class="grid grid-cols-1 md:grid-cols-6 gap-6 mb-16">
-        <!-- Large Card - AI Feature -->
-        <div class="md:col-span-4 md:row-span-2 gradient-1 rounded-3xl p-10 text-white card-hover">
-          <div class="text-6xl mb-6">🤖</div>
-          <h2 class="text-4xl font-bold mb-4">AI 智能生成</h2>
-          <p class="text-lg text-white/90 mb-6 leading-relaxed">
-            只需输入你的想法，AI 自动生成流程图、思维导图、架构图、UML 图等专业图表。
-            告别手动拖拽，一句话完成复杂图表绘制。
-          </p>
-          <div class="flex gap-2">
-            <span class="px-4 py-2 bg-white/20 rounded-full text-sm">流程图</span>
-            <span class="px-4 py-2 bg-white/20 rounded-full text-sm">思维导图</span>
-            <span class="px-4 py-2 bg-white/20 rounded-full text-sm">架构图</span>
-          </div>
-        </div>
-
-        <!-- Small Card 1 -->
-        <div class="md:col-span-2 gradient-2 rounded-3xl p-8 text-white card-hover">
-          <div class="text-5xl mb-4">⚡</div>
-          <h3 class="text-2xl font-bold mb-3">实时协作</h3>
-          <p class="text-white/90">多人同时在线，改动实时同步</p>
-        </div>
-
-        <!-- Small Card 2 -->
-        <div class="md:col-span-2 gradient-3 rounded-3xl p-8 text-white card-hover">
-          <div class="text-5xl mb-4">✨</div>
-          <h3 class="text-2xl font-bold mb-3">简单易用</h3>
-          <p class="text-white/90">直观界面，无需学习即可上手</p>
-        </div>
-      </div>
-
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="bg-white rounded-2xl p-6 text-center card-hover">
-          <div class="text-4xl font-black text-blue-600 mb-2">1M+</div>
-          <div class="text-gray-600">用户</div>
-        </div>
-        <div class="bg-white rounded-2xl p-6 text-center card-hover">
-          <div class="text-4xl font-black text-purple-600 mb-2">10M+</div>
-          <div class="text-gray-600">图表</div>
-        </div>
-        <div class="bg-white rounded-2xl p-6 text-center card-hover">
-          <div class="text-4xl font-black text-pink-600 mb-2">50+</div>
-          <div class="text-gray-600">国家</div>
-        </div>
-        <div class="bg-white rounded-2xl p-6 text-center card-hover">
-          <div class="text-4xl font-black text-green-600 mb-2">99.9%</div>
-          <div class="text-gray-600">可用性</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SEO Keywords Section - 隐藏但对搜索引擎可见 -->
-    <div class="sr-only" aria-hidden="true">
-      <h2>AI 白板 - 专业的在线协作白板工具</h2>
-      <p>
-        在线白板、AI白板、电子白板、协作白板、白板软件、AI生成流程图、AI思维导图、架构图工具、UML图、多人实时协作、在线协同、远程办公、团队协作、头脑风暴工具、设计协作、可视化工具、Miro替代、FigJam替代、boardmix替代
-      </p>
-      <p>
-        AI 白板是一款强大的电子白板软件，提供 AI 生成流程图、AI 思维导图、架构图、UML 图等功能。
-        支持多人实时协作、在线协同编辑，是 Miro、FigJam、boardmix 的优质替代方案。
-        适用于远程办公、团队协作、头脑风暴、设计协作等场景，帮助团队提升工作效率。
-      </p>
-    </div>
-
-    <!-- Footer -->
-    <footer class="py-8 text-center text-gray-500">
-      <p>© 2026 AI 白板 · aibaiban.com</p>
-    </footer>
+  <body>
+    <div id="root"></div>
   </body>
 </html>

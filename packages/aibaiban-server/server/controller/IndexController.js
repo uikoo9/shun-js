@@ -9,9 +9,4 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
     service.index(req, res);
   });
-
-  // board
-  app.get('/board', (req, res) => {
-    service.board(req, res);
-  });
 };
