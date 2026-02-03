@@ -15,7 +15,7 @@ const gemini = GeminiVertex({
 });
 
 // 提示词版本配置（方便 A/B 测试）
-const PROMPT_VERSION = global.QZ_CONFIG.gemini.PROMPT_VERSION || 'v5';
+const PROMPT_VERSION = global.QZ_CONFIG.gemini.PROMPT_VERSION || 'v6';
 console.log(`[LLM] Using prompt version: ${PROMPT_VERSION}`);
 
 // const
@@ -214,11 +214,13 @@ exports.llmGetDrawJson = async (userPrompts) => {
   // draw json system prompt - 支持版本切换
   if (!drawJsonPrompt) {
     const promptFile =
-      PROMPT_VERSION === 'v5'
-        ? './prompt-draw-v5.md'
-        : PROMPT_VERSION === 'v4'
-          ? './prompt-draw-v4.md'
-          : './prompt-draw.md';
+      PROMPT_VERSION === 'v6'
+        ? './prompt-draw-v6.md'
+        : PROMPT_VERSION === 'v5'
+          ? './prompt-draw-v5.md'
+          : PROMPT_VERSION === 'v4'
+            ? './prompt-draw-v4.md'
+            : './prompt-draw.md';
     drawJsonPrompt = await readFile(path.resolve(__dirname, promptFile));
     console.log(`[LLM Draw] Loaded prompt: ${promptFile}`);
   }
