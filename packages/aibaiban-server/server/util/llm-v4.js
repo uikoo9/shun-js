@@ -15,7 +15,7 @@ const gemini = GeminiVertex({
 });
 
 // 提示词版本配置（方便 A/B 测试）
-const PROMPT_VERSION = global.QZ_CONFIG.gemini.PROMPT_VERSION || 'v4';
+const PROMPT_VERSION = global.QZ_CONFIG.gemini.PROMPT_VERSION || 'v5';
 console.log(`[LLM] Using prompt version: ${PROMPT_VERSION}`);
 
 // const
@@ -57,7 +57,7 @@ let intentSystemPrompt = null;
 exports.llmParseIntent = async (userPrompts) => {
   // intent system prompt - 支持版本切换
   if (!intentSystemPrompt) {
-    const promptFile = PROMPT_VERSION === 'v4' ? './prompt-intent-v4.md' : './prompt-intent.md';
+    const promptFile = './prompt-intent-v2.md'; // 固定使用 v2 版本
     intentSystemPrompt = await readFile(path.resolve(__dirname, promptFile));
     console.log(`[LLM Intent] Loaded prompt: ${promptFile}`);
   }
@@ -213,7 +213,12 @@ let drawJsonPrompt = null;
 exports.llmGetDrawJson = async (userPrompts) => {
   // draw json system prompt - 支持版本切换
   if (!drawJsonPrompt) {
-    const promptFile = PROMPT_VERSION === 'v4' ? './prompt-draw-v4.md' : './prompt-draw.md';
+    const promptFile =
+      PROMPT_VERSION === 'v5'
+        ? './prompt-draw-v5.md'
+        : PROMPT_VERSION === 'v4'
+          ? './prompt-draw-v4.md'
+          : './prompt-draw.md';
     drawJsonPrompt = await readFile(path.resolve(__dirname, promptFile));
     console.log(`[LLM Draw] Loaded prompt: ${promptFile}`);
   }
