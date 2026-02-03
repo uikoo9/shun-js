@@ -1,5 +1,5 @@
 // llm
-const { llmParseIntent, llmGetDrawJson } = require('../util/llm.js');
+const { llmParseIntent, llmGetDrawJson } = require('../util/llm-v4.js');
 
 // util
 const { chatFeishuMsg, chatResFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
