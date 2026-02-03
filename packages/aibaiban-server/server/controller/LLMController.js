@@ -10,8 +10,13 @@ module.exports = (app) => {
     service.intent(req, res);
   });
 
-  //
+  // draw (原有方法)
   app.post('/draw', (req, res) => {
     service.draw(req, res);
+  });
+
+  // drawWithTools (Tool Calling 方法)
+  app.post('/drawWithTools', (req, res) => {
+    service.drawWithTools(req, res);
   });
 };

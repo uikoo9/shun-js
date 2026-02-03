@@ -1,6 +1,9 @@
 // llm
 const { llmParseIntent, llmGetDrawJson } = require('../util/llm-v4.js');
 
+// tool calling
+const { generateFlowchartWithTools } = require('../util/llm-toolcall.js');
+
 // util
 const { chatFeishuMsg, chatResFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
 
@@ -76,6 +79,44 @@ exports.draw = async (req, res) => {
     res.jsonSuccess('success', llmGetDrawJsonObj);
   } catch (error) {
     const msg = 'draw json error';
+    errorFeishuMsg(req, msg);
+    req.logger.error(methodName, msg, error);
+    res.jsonFail(msg);
+  }
+};
+
+/**
+ * drawWithTools - 使用 Tool Calling 生成流程图
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+exports.drawWithTools = async (req, res) => {
+  const methodName = 'drawWithTools';
+
+  // check
+  if (!req.body.userPrompt) {
+    const msg = 'need userPrompt';
+    req.logger.error(methodName, msg);
+    res.jsonFail(msg);
+    return;
+  }
+
+  // const
+  const userPrompt = decodeURIComponent(req.body.userPrompt);
+  req.logger.info(methodName, 'userPrompt', userPrompt);
+  chatFeishuMsg(req);
+
+  // go
+  try {
+    const diagram = await generateFlowchartWithTools(userPrompt);
+    req.logger.info(methodName, 'diagram', diagram);
+
+    // r
+    chatResFeishuMsg(req, JSON.stringify(diagram));
+    res.jsonSuccess('success', diagram);
+  } catch (error) {
+    const msg = 'draw with tools error';
     errorFeishuMsg(req, msg);
     req.logger.error(methodName, msg, error);
     res.jsonFail(msg);
