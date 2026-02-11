@@ -26,7 +26,8 @@
     "qiao-ajax": "^5.2.4",
     "qiao-encode": "^5.0.6",
     "qiao-log": "^5.1.9",
-    "qiao-z": "^5.8.9"
+    "qiao-z": "^5.8.9",
+    "qiao-z-nuser": "^5.9.1"
   },
   "publishConfig": {
     "access": "public",

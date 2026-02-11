@@ -10,10 +10,10 @@ module.exports = (app) => {
     service.index(req, res);
   });
 
-  // github auth
-  app.get('/github/auth', (req, res) => {
-    service.githubAuth(req, res);
-  });
+  // // github auth
+  // app.get('/github/auth', (req, res) => {
+  //   service.githubAuth(req, res);
+  // });
 
   // github callback
   app.get('/github/callback', (req, res) => {

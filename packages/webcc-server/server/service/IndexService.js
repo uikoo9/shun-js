@@ -1,5 +1,8 @@
 // github
-const { getGitHubAuthUrl, getGithubUserinfo } = require('../util/github.js');
+const {
+  // getGitHubAuthUrl,
+  getGithubUserinfo,
+} = require('../util/github.js');
 
 /**
  * index
@@ -10,21 +13,21 @@ exports.index = async (req, res) => {
   res.send('1');
 };
 
-/**
- * githubAuth
- * @param {*} req
- * @param {*} res
- */
-exports.githubAuth = async (req, res) => {
-  // auth
-  const authObj = getGitHubAuthUrl();
+// /**
+//  * githubAuth
+//  * @param {*} req
+//  * @param {*} res
+//  */
+// exports.githubAuth = async (req, res) => {
+//   // auth
+//   const authObj = getGitHubAuthUrl();
 
-  // set cookie
-  res.setCookie('state', authObj.state);
+//   // set cookie
+//   res.setCookie('state', authObj.state);
 
-  // redirect
-  res.redirect(authObj.finalUrl);
-};
+//   // redirect
+//   res.redirect(authObj.finalUrl);
+// };
 
 /**
  * githubCallback

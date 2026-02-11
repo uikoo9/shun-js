@@ -23,6 +23,9 @@ const { parseServerConfig } = require('@shun-js/shun-config');
   options.log = require('qiao-log');
   options.logOptions = require('./server/log-options.js')();
 
+  // options modules
+  options.modules = [require('qiao-z-nuser').initGithub];
+
   // go
   const app = await require('qiao-z')(options);
   app.listen(config.port);
