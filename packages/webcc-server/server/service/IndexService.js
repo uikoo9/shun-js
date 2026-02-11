@@ -69,6 +69,11 @@ exports.githubCallback = async (req, res) => {
   }
 
   // userinfo
-  await getGithubUserinfo(queryCode);
+  const githubUserinfo = await getGithubUserinfo(req, queryCode);
+  if (!githubUserinfo) {
+    req.logger.error(methodName, 'githubUserinfo is null');
+    res.redirect(fallbackUrl);
+    return;
+  }
   res.send('1');
 };
