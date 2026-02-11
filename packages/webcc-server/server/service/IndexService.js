@@ -35,8 +35,7 @@ exports.githubCallback = async (req, res) => {
   const methodName = 'githubCallback';
 
   // fallback url
-  // const fallbackUrl = global.QZ_CONFIG.github.fallbackUrl;
-  const fallbackUrl = 'http://localhost:7008';
+  const fallbackUrl = global.QZ_CONFIG.github.fallbackUrl;
 
   // check
   if (!req.cookies) {
