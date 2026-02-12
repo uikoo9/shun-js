@@ -15,3 +15,5 @@ CREATE TABLE `t_user_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 
   DEFAULT CHARSET=utf8mb4 
   COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_user_item_id_del_tag ON t_user_info(user_item_id, del_tag);

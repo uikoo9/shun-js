@@ -1,3 +1,6 @@
+// model
+const { getUserInfoById, addUserInfo } = require('../model/UserInfoModel.js');
+
 // github
 const { getGithubUserinfo } = require('../util/github.js');
 
@@ -37,6 +40,14 @@ exports.userGithub = async (req, res) => {
   const userItem = await loginORRegUser(req, res, githubUserinfo.email);
   if (!userItem) return;
   req.logger.info(methodName, 'github login or reg ok');
+
+  // user info
+  const getUserInfoByIdRes = await getUserInfoById(req, res, userItem.id);
+  if (!getUserInfoByIdRes) return;
+  if (getUserInfoByIdRes.length === 0) {
+    const addUserInfoRes = await addUserInfo(req, res, userItem.id, githubUserinfo);
+    if (!addUserInfoRes) return;
+  }
 
   // r
   const finalUser = {
