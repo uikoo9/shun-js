@@ -39,5 +39,10 @@ exports.userGithub = async (req, res) => {
   req.logger.info(methodName, 'github login or reg ok');
 
   // r
-  res.jsonSuccess('登录成功！', userItem);
+  const finalUser = {
+    id: userItem.id,
+    usertoken: userItem.usertoken,
+    useremail: userItem.usermobile,
+  };
+  res.jsonSuccess('登录成功！', finalUser);
 };
