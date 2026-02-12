@@ -1,6 +1,9 @@
 // github
 const { getGithubUserinfo } = require('../util/github.js');
 
+// util
+const { loginORRegUser } = require('../util/user.js');
+
 /**
  * userGithub
  * @param {*} req
@@ -29,8 +32,12 @@ exports.userGithub = async (req, res) => {
     res.redirect(fallbackUrl);
     return;
   }
-  req.logger.info(methodName, 'githubUserinfo', githubUserinfo);
+
+  // user item
+  const userItem = await loginORRegUser(req, res, githubUserinfo.email);
+  if (!userItem) return;
+  req.logger.info(methodName, 'github login or reg ok');
 
   // r
-  res.jsonSuccess('登录成功！');
+  res.jsonSuccess('登录成功！', userItem);
 };
