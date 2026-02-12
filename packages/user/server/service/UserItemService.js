@@ -2,10 +2,10 @@
 const { AESEncrypt } = require('qiao-encode');
 
 // model
-const { getUserItemByName, addUserItem, getUserItemById } = require('../model/UserItemModel.js');
+const { getUserItemById } = require('../model/UserItemModel.js');
 
-// feishu
-const { feishuBot } = require('@shun-js/shun-service');
+// util
+const { loginORRegUser } = require('../util/user.js');
 
 /**
  * userLogin
@@ -48,45 +48,8 @@ exports.userLogin = async (req, res) => {
   }
 
   // user item
-  const getUserItemRes = await getUserItemByName(req, res, mobile);
-  if (!getUserItemRes) return;
-
-  // reg
-  if (getUserItemRes.length !== 1) {
-    // add user
-    const addUserItemRes = await addUserItem(req, res, mobile);
-    if (!addUserItemRes) return;
-
-    // feishu
-    const finalMsg = `【提醒】success - ${methodName} - new user reg - ${addUserItemRes.id}`;
-    const feishuBotRes = await feishuBot({
-      url: global.QZ_CONFIG.feishu.url,
-      feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
-      feishuMsg: finalMsg,
-    });
-    req.logger.warn(methodName, 'feishuBotRes', feishuBotRes);
-
-    // r
-    res.jsonSuccess('登录成功！', addUserItemRes);
-    return;
-  }
-
-  // login
-  const user = getUserItemRes[0];
-  const userItem = {
-    id: user.id,
-    usertoken: AESEncrypt(mobile + user.user_item_password, global.QZ_CONFIG.encryptKey),
-    usermobile: mobile,
-  };
-
-  // feishu
-  const finalMsg = `【提醒】success - ${methodName} - user login - ${userItem.id}`;
-  const feishuBotRes = await feishuBot({
-    url: global.QZ_CONFIG.feishu.url,
-    feishuUrl: global.QZ_CONFIG.feishu.feishuUrl,
-    feishuMsg: finalMsg,
-  });
-  req.logger.warn(methodName, 'feishuBotRes', feishuBotRes);
+  const userItem = await loginORRegUser(mobile);
+  if (!userItem) return;
 
   // r
   res.jsonSuccess('登录成功！', userItem);
