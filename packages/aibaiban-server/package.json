@@ -33,7 +33,7 @@
     "qiao-rate-limit": "^5.8.8",
     "qiao-redis": "^5.8.9",
     "qiao-z": "^5.8.9",
-    "qiao-z-nuser": "^5.9.5",
+    "qiao-z-nuser": "^5.9.6",
     "qiao-z-service": "^5.9.2",
     "qiao-z-sms": "^5.9.2",
     "viho-llm": "^0.2.3",
