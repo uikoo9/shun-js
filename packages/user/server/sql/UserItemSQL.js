@@ -13,7 +13,7 @@ exports.addUserItem = `
 insert into 
   t_user_item 
 values
-  (null, ?, ?, now(), '0')
+  (null, ?, ?, ?, now(), '0')
 `;
 
 exports.getUserItemById = `
