@@ -40,9 +40,8 @@ exports.userGithub = async (req, res) => {
 
   // r
   const finalUser = {
-    id: userItem.id,
+    userid: userItem.id,
     usertoken: userItem.usertoken,
-    useremail: userItem.usermobile,
   };
   res.jsonSuccess('登录成功！', finalUser);
 };
