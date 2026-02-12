@@ -1,82 +1,8 @@
-// github
-const {
-  // getGitHubAuthUrl,
-  getGithubUserinfo,
-} = require('../util/github.js');
-
 /**
  * index
  * @param {*} req
  * @param {*} res
  */
 exports.index = async (req, res) => {
-  res.send('1');
-};
-
-// /**
-//  * githubAuth
-//  * @param {*} req
-//  * @param {*} res
-//  */
-// exports.githubAuth = async (req, res) => {
-//   // auth
-//   const authObj = getGitHubAuthUrl();
-
-//   // set cookie
-//   res.setCookie('state', authObj.state);
-
-//   // redirect
-//   res.redirect(authObj.finalUrl);
-// };
-
-/**
- * githubCallback
- * @param {*} req
- * @param {*} res
- */
-exports.githubCallback = async (req, res) => {
-  const methodName = 'githubCallback';
-
-  // fallback url
-  const fallbackUrl = global.QZ_CONFIG.github.fallbackUrl;
-
-  // check
-  if (!req.cookies) {
-    req.logger.error(methodName, 'req.cookies is null');
-    res.redirect(fallbackUrl);
-    return;
-  }
-  if (!req.query) {
-    req.logger.error(methodName, 'req.query is null');
-    res.redirect(fallbackUrl);
-    return;
-  }
-
-  // check state
-  const cookieState = req.cookies.state;
-  const queryState = req.query.state;
-  if (cookieState !== queryState) {
-    req.logger.info(methodName, 'cookieState', cookieState);
-    req.logger.info(methodName, 'queryState', queryState);
-    req.logger.error(methodName, 'cookieState !== queryState');
-    res.redirect(fallbackUrl);
-    return;
-  }
-
-  // check code
-  const queryCode = req.query.code;
-  if (!queryCode) {
-    req.logger.error(methodName, 'queryCode is null');
-    res.redirect(fallbackUrl);
-    return;
-  }
-
-  // userinfo
-  const githubUserinfo = await getGithubUserinfo(req, queryCode);
-  if (!githubUserinfo) {
-    req.logger.error(methodName, 'githubUserinfo is null');
-    res.redirect(fallbackUrl);
-    return;
-  }
   res.send('1');
 };
