@@ -43,7 +43,7 @@ exports.addUserItem = async (req, res, mobile) => {
     req.logger.info(methodName, 'encryptPassword', encryptPassword);
 
     // add user
-    const addUserItemRes = await req.db.query(sql.addUserItem, [mobile, encryptPassword, global.QZ_CONFIG.user.from]);
+    const addUserItemRes = await req.db.query(sql.addUserItem, [mobile, encryptPassword, req.body.from || 'null']);
 
     // userItem
     const userItem = {

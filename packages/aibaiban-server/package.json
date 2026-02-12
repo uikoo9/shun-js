@@ -33,12 +33,12 @@
     "qiao-rate-limit": "^5.8.8",
     "qiao-redis": "^5.8.9",
     "qiao-z": "^5.8.9",
-    "qiao-z-nuser": "^5.8.8",
-    "qiao-z-service": "^5.8.8",
-    "qiao-z-sms": "^5.8.8",
+    "qiao-z-nuser": "^5.9.5",
+    "qiao-z-service": "^5.9.2",
+    "qiao-z-sms": "^5.9.2",
     "viho-llm": "^0.2.3",
-    "zod": "^3.25.76",
-    "zod-to-json-schema": "^3.25.0"
+    "zod": "^4.3.6",
+    "zod-to-json-schema": "^3.25.1"
   },
   "publishConfig": {
     "access": "public",
