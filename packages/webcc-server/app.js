@@ -23,6 +23,13 @@ const { parseServerConfig } = require('@shun-js/shun-config');
   options.log = require('qiao-log');
   options.logOptions = require('./server/log-options.js')();
 
+  // options rate limit
+  options.rateLimitLib = require('qiao-rate-limit');
+  options.rateLimitOptions = config.rateLimitOptions;
+
+  // options checks
+  options.checks = [require('./server/util/check.js').checkUserAuth];
+
   // options modules
   options.modules = [require('qiao-z-nuser').initUserInfo, require('qiao-z-nuser').initGithub];
 

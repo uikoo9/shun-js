@@ -23,8 +23,10 @@
   "dependencies": {
     "@shun-js/shun-config": "^0.3.1",
     "qiao-log": "^5.1.9",
+    "qiao-rate-limit": "^5.8.8",
     "qiao-z": "^5.8.9",
-    "qiao-z-nuser": "^5.9.7"
+    "qiao-z-nuser": "^5.9.8",
+    "qiao-z-service": "^5.9.7"
   },
   "publishConfig": {
     "access": "public",

@@ -4,5 +4,5 @@
  * @param {*} res
  */
 exports.index = async (req, res) => {
-  res.send('1');
+  res.send('welcome to webcc.dev');
 };
