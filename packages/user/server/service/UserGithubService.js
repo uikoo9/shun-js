@@ -1,5 +1,5 @@
 // model
-const { getUserInfoById, addUserInfo } = require('../model/UserInfoModel.js');
+const { addUserInfo, isUserInfoExists } = require('../model/UserInfoModel.js');
 
 // github
 const { getGithubUserinfo } = require('../util/github.js');
@@ -42,9 +42,9 @@ exports.userGithub = async (req, res) => {
   req.logger.info(methodName, 'github login or reg ok');
 
   // user info
-  const getUserInfoByIdRes = await getUserInfoById(req, res, userItem.id);
-  if (!getUserInfoByIdRes) return;
-  if (getUserInfoByIdRes.length === 0) {
+  const isUserInfoExistsRes = await isUserInfoExists(req, res, userItem.id);
+  if (!isUserInfoExistsRes) return;
+  if (isUserInfoExistsRes.length === 0) {
     const addUserInfoRes = await addUserInfo(req, res, userItem.id, githubUserinfo);
     if (!addUserInfoRes) return;
   }
