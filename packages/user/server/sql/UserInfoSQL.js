@@ -4,7 +4,7 @@ select
 from 
   t_user_info 
 where 
-  user_item_id=1
+  user_item_id=?
 and 
   del_tag='0'
 `;
