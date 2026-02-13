@@ -1,8 +1,20 @@
+// encode
+const { uuid } = require('qiao-encode');
+
 /**
- * index
+ * acRefresh
  * @param {*} req
  * @param {*} res
  */
-exports.index = async (req, res) => {
-  res.send('welcome to webcc.dev');
+exports.acRefresh = async (req, res) => {
+  // const
+  const userid = req.headers.userid;
+
+  // set
+  const acKey = `ac-${userid}`;
+  const accessToken = uuid();
+  await req.redis.set(acKey, accessToken);
+
+  // r
+  res.jsonSuccess('ac refresh ok', accessToken);
 };

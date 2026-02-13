@@ -5,8 +5,8 @@ const service = require('../service/IndexService.js');
  * controller
  */
 module.exports = (app) => {
-  // index
-  app.get('/', (req, res) => {
-    service.index(req, res);
+  // ac refresh
+  app.post('/ac/refresh', (req, res) => {
+    service.acRefresh(req, res);
   });
 };
