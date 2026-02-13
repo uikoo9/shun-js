@@ -1,5 +1,5 @@
 // qiao
-const { AESEncrypt } = require('qiao-encode');
+const { AESEncrypt, uuid } = require('qiao-encode');
 
 // model
 const { getUserItemByName, addUserItem } = require('../model/UserItemModel.js');
@@ -59,4 +59,22 @@ exports.loginORRegUser = async (req, res, mobileOREmail) => {
 
   // r
   return userItem;
+};
+
+/**
+ * getUserAccessToken
+ * @param {*} req
+ * @param {*} userid
+ * @returns
+ */
+exports.getUserAccessToken = async (req, userid) => {
+  // get
+  const acKey = `ac-${userid}`;
+  const accessToken = await req.redis.get(acKey);
+  if (accessToken) return accessToken;
+
+  // set
+  const newAccessToken = uuid();
+  await req.redis.set(acKey, newAccessToken);
+  return newAccessToken;
 };

@@ -1,6 +1,9 @@
 // model
 const { getUserInfoById } = require('../model/UserInfoModel.js');
 
+// util
+const { getUserAccessToken } = require('../util/user.js');
+
 /**
  * userInfo
  * @param {*} req
@@ -22,6 +25,10 @@ exports.userInfo = async (req, res) => {
   // user info
   const getUserInfoByIdRes = await getUserInfoById(req, res, userid);
   if (!getUserInfoByIdRes) return;
+
+  // access token
+  const accessToken = await getUserAccessToken(req, userid);
+  getUserInfoByIdRes.accessToken = accessToken;
 
   // r
   res.jsonSuccess('登录成功！', getUserInfoByIdRes);
