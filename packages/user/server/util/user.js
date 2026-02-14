@@ -78,3 +78,17 @@ exports.getUserAccessToken = async (req, userid) => {
   await req.redis.set(acKey, newAccessToken);
   return newAccessToken;
 };
+
+/**
+ * setUserAccessToken
+ * @param {*} req
+ * @param {*} userid
+ * @param {*} token
+ */
+exports.setUserAccessToken = async (req, userid, token) => {
+  const tokenKey = `token-${token}`;
+  const tokenValue = await req.redis.get(tokenKey);
+  if (tokenValue) return;
+
+  await req.redis.set(tokenKey, userid);
+};

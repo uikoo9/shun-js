@@ -2,7 +2,7 @@
 const { getUserInfoById } = require('../model/UserInfoModel.js');
 
 // util
-const { getUserAccessToken } = require('../util/user.js');
+const { getUserAccessToken, setUserAccessToken } = require('../util/user.js');
 
 /**
  * userInfo
@@ -28,6 +28,7 @@ exports.userInfo = async (req, res) => {
 
   // access token
   const accessToken = await getUserAccessToken(req, userid);
+  await setUserAccessToken(req, userid, accessToken);
   getUserInfoByIdRes.accessToken = accessToken;
 
   // r
