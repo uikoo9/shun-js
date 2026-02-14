@@ -9,4 +9,9 @@ module.exports = (app) => {
   app.post('/ac/refresh', (req, res) => {
     service.acRefresh(req, res);
   });
+
+  // ac check
+  app.post('/ac/check', (req, res) => {
+    service.acCheck(req, res);
+  });
 };
