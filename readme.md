@@ -36,3 +36,4 @@ shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
 - @shun-js/aibaiban-server: 7006-aibaiban.com
 - @shun-js/remotion-server: 7007-remotion.cool
 - @shun-js/webcc-server: 7008-webcc.dev
+- @shun-js/webcc-ws: 7009-ws.webcc.dev
