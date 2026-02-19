@@ -164,6 +164,12 @@ const { parseServerConfig } = require('@shun-js/shun-config');
     socket.emit('registered', { token });
     console.log(`[Server] Browser connected: token=${token}, total browsers=${room.browserSockets.length}`);
 
+    // 🔥 通知 CLI 有浏览器连接了（触发发送缓存的输出）
+    if (room.cliSocket && room.cliSocket.connected) {
+      room.cliSocket.emit('browser-connected');
+      console.log(`[Server] Notified CLI about browser connection: token=${token}`);
+    }
+
     // 浏览器断开时清理
     socket.on('disconnect', () => {
       console.log(`[Server] Browser disconnected: token=${token}`);
