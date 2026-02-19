@@ -1,6 +1,6 @@
 {
   "name": "@shun-js/webcc-ws",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "webcc.dev ws",
   "keywords": [
     "web claude code"
