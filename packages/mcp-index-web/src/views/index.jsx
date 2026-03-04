@@ -6,13 +6,13 @@ import { createRoot } from 'react-dom/client';
 import './index.scss';
 
 // ui
-import { Header, Button, Footer } from 'qiao-ui';
+import { Header, Button } from 'qiao-ui';
 
 // models
 import { store } from '@models';
 
 // components
-import { Search, Cards } from '@components';
+import { Search, Cards, CustomFooter } from '@components';
 
 // services
 import { mcpList } from '@services';
@@ -92,7 +92,7 @@ const IndexView = () => {
       ) : null}
 
       {/* footer */}
-      <Footer companyName={siteName} companyUrl={siteUrl} />
+      <CustomFooter />
     </div>
   );
 };

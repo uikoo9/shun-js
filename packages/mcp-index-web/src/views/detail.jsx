@@ -6,10 +6,10 @@ import { createRoot } from 'react-dom/client';
 import './detail.scss';
 
 // ui
-import { Header, Breadcrumbs, Footer } from 'qiao-ui';
+import { Header, Breadcrumbs } from 'qiao-ui';
 
 // md
-import { DetailDesc, DetailMarkdown, DetailArtalk } from '@components';
+import { DetailDesc, DetailMarkdown, DetailArtalk, CustomFooter } from '@components';
 
 // data
 import { reportWebData } from '@util/data.js';
@@ -80,7 +80,7 @@ const DetailView = () => {
       </div>
 
       {/* footer */}
-      <Footer companyName={siteName} companyUrl={siteUrl} />
+      <CustomFooter />
     </div>
   );
 };

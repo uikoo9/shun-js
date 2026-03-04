@@ -1,6 +1,7 @@
 // index
 export { Search } from './search/search.jsx';
 export { Cards } from './cards/cards.jsx';
+export { CustomFooter } from './footer/footer.jsx';
 
 // detail
 export { DetailDesc } from './detail/detail-desc.jsx';
