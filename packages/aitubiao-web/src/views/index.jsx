@@ -8,10 +8,10 @@ import './cards.scss';
 import banner from './banner.webp';
 
 // ui
-import { Header, Footer, Modal, Button, Viewer, Alert } from 'qiao-ui';
+import { Header, Modal, Button, Viewer, Alert } from 'qiao-ui';
 
 // components
-import { Login } from '@components';
+import { Login, CustomFooter } from '@components';
 
 // services
 import { genChart } from '@services';
@@ -201,7 +201,7 @@ const IndexView = () => {
       </div>
 
       {/* footer */}
-      <Footer companyName={siteName} companyUrl={siteUrl} />
+      <CustomFooter />
 
       {/* login */}
       <div className="login-modal">

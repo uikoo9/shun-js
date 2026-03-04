@@ -5,6 +5,9 @@ import { createRoot } from 'react-dom/client';
 // css
 import './home.scss';
 
+// components
+import { CustomFooter } from '@components';
+
 /**
  * home view
  */
@@ -74,9 +77,7 @@ const HomeView = () => {
           <p>内容区域...</p>
         </main>
 
-        <footer class="bg-gray-800 text-white p-4">
-          <p>Footer</p>
-        </footer>
+        <CustomFooter />
       </div>
     </div>
   );
