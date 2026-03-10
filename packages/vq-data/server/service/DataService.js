@@ -25,7 +25,7 @@ exports.clarityReport = async () => {
     logger.error(methodName, '请在 config.json 中配置项目');
     return;
   }
-  logger.log(methodName, `正在获取 ${projects.length} 个项目的数据...`);
+  logger.info(methodName, `正在获取 ${projects.length} 个项目的数据...`);
 
   // 逐个请求，每次间隔 1 秒
   const results = [];
@@ -35,7 +35,7 @@ exports.clarityReport = async () => {
       const pages = extractMetric(data, 'PopularPages');
       const pv = pages.reduce((sum, p) => sum + (Number(p.visitsCount) || 0), 0);
       results.push({ name: project.name, data, uv: getUV(data), pv });
-      logger.log(methodName, `  ✅ ${project.name}`);
+      logger.info(methodName, `  ✅ ${project.name}`);
     } catch (err) {
       logger.error(methodName, `  ❌ ${project.name}: ${err.message}`);
     }
@@ -48,11 +48,11 @@ exports.clarityReport = async () => {
 
   // 构建消息并发送到飞书
   const message = buildFeishuMessage(results, numOfDays);
-  logger.log(methodName, '\n' + message);
+  logger.info(methodName, '\n' + message);
 
   try {
     await feishuMsg(message);
-    logger.log(methodName, '✅ 已发送到飞书');
+    logger.info(methodName, '✅ 已发送到飞书');
   } catch (err) {
     logger.error(methodName, `❌ 飞书发送失败: ${err.message}`);
   }
