@@ -6,8 +6,8 @@ const Logger = require('qiao-log');
 const logOptions = require('../log-options.js')();
 const logger = Logger(logOptions);
 
-// exports.time = '0 1 * * *';
-exports.time = '*/5 * * * * *';
+exports.time = '0 1 * * *';
+// exports.time = '*/5 * * * * *';
 
 exports.tick = async () => {
   await websiteReport();
@@ -28,6 +28,6 @@ async function websiteReport() {
   clarityReport();
 
   // end
-  // go = false;
+  go = false;
   logger.info(methodName, 'websiteReport-end');
 }
