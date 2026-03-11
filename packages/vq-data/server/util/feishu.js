@@ -25,7 +25,7 @@ exports.buildFeishuMessage = (results, numOfDays) => {
     const pv = pages.reduce((sum, p) => sum + (Number(p.visitsCount) || 0), 0);
 
     content += `📊 ${r.name}\n`;
-    content += `   UV: ${traffic.distinctUserCount || 0}  |  会话: ${traffic.totalSessionCount || 0}  |  PV: ${pv}\n`;
+    content += `   UV: ${traffic.totalSessionCount || 0}  |  PV: ${pv}\n`;
 
     if (pages.length > 0) {
       for (const page of pages.slice(0, 5)) {

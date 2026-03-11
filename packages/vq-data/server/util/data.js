@@ -25,5 +25,5 @@ exports.extractMetric = (data, metricName) => {
  */
 exports.getUV = (data) => {
   const traffic = exports.extractMetric(data, 'Traffic')[0] || {};
-  return Number(traffic.distinctUserCount) || 0;
+  return Number(traffic.totalSessionCount) || 0;
 };
