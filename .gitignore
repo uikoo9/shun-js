@@ -254,7 +254,6 @@ yarn.lock
 **/android/app/release/
 **/android/app/src/main/assets/index.android.bundle
 
-CLAUDE.md
 # env files (can opt-in for committing if needed)
 .env*
 
@@ -264,6 +263,7 @@ CLAUDE.md
 ## -- project --
 .nx
 .npmrc
+.cc.sh
 configs
 config-production.js
 config.js
