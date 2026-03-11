@@ -1,7 +1,7 @@
 {
   "name": "@shun-js/cli-tmp",
   "private": true,
-  "version": "0.3.3",
+  "version": "1.0.0",
   "description": "shun.js cli (deprecated)",
   "keywords": [
     "shun.js",
