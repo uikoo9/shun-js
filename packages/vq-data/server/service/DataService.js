@@ -12,10 +12,10 @@ const logOptions = require('../log-options.js')();
 const logger = Logger(logOptions);
 
 /**
- * clarityReport
+ * dataReport
  */
-exports.clarityReport = async () => {
-  const methodName = 'clarityReport';
+exports.dataReport = async () => {
+  const methodName = 'dataReport';
 
   // const
   const projects = global.QZ_CONFIG.projects;
