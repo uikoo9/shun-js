@@ -25,4 +25,21 @@ function getGlobalPath() {
   }
 }
 
-module.exports = { installGlobal, getGlobalPath };
+function ensurePm2() {
+  try {
+    execSync('pm2 --version', { encoding: 'utf-8', stdio: 'pipe' });
+    log.info('pm2 is installed');
+  } catch {
+    log.info('pm2 not found, installing...');
+    try {
+      execSync('npm i -g pm2', { encoding: 'utf-8' });
+      log.success('pm2 installed');
+    } catch (e) {
+      log.error('failed to install pm2');
+      console.log(e.message);
+      process.exit(1);
+    }
+  }
+}
+
+module.exports = { installGlobal, getGlobalPath, ensurePm2 };

@@ -1,8 +1,7 @@
 {
-  "name": "@shun-js/cli-tmp",
-  "private": true,
+  "name": "@shun-js/shun-cli",
   "version": "1.0.0",
-  "description": "shun.js cli (deprecated)",
+  "description": "shun.js cli",
   "keywords": [
     "shun.js",
     "cli"
@@ -24,10 +23,9 @@
     "bin"
   ],
   "dependencies": {
-    "debug": "^4.4.3",
-    "pm2": "^6.0.14",
-    "qiao-cli": "^5.0.0",
-    "qiao-file": "^5.0.6"
+    "commander": "^13.0.0",
+    "picocolors": "^1.1.0",
+    "pm2": "^6.0.14"
   },
   "publishConfig": {
     "access": "public",

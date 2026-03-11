@@ -1,19 +1,19 @@
-# @shun-js/cli-tmp
+# @shun-js/shun-cli
 
-shun.js cli tool (deprecated)
+shun.js cli tool
 
-## 安装
+## Install
 
 ```shell
 npm i -g @shun-js/shun-cli
 ```
 
-## 启动服务
+## Start servers
 
 ```shell
-# 启动，在feishu-grafana-alert.json所在目录下
-shunjs start @shun-js/feishu-grafana-alert
+# start a server (version is required), run in the directory containing config json files
+shunjs start @shun-js/feishu-bot@0.3.1
 
-# 可以启动多个服务
-shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
+# start multiple servers
+shunjs start @shun-js/feishu-bot@0.3.1 @shun-js/aitubiao-server@0.3.8
 ```
