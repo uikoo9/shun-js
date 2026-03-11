@@ -1,6 +1,6 @@
-# @shun-js/shun-cli
+# @shun-js/cli-tmp
 
-shun.js cli tool
+shun.js cli tool (deprecated)
 
 ## 安装
 
