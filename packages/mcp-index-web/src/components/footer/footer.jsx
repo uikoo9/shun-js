@@ -64,7 +64,36 @@ export const CustomFooter = () => {
             </a>
           </div>
 
-          {/* Column 3: Contact */}
+          {/* Column 3: More */}
+          <div className="custom-footer-column">
+            <h4 className="custom-footer-title">More</h4>
+            <a
+              href="https://b.vincentqiao.com/en/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-footer-link"
+            >
+              Blog
+            </a>
+            <a
+              href="https://resume.vincentqiao.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-footer-link"
+            >
+              Resume
+            </a>
+            <a
+              href="https://code.vincentqiao.com/#/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-footer-link"
+            >
+              Code Collection
+            </a>
+          </div>
+
+          {/* Column 4: Contact */}
           <div className="custom-footer-column">
             <h4 className="custom-footer-title">Contact</h4>
             <a
