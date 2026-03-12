@@ -7,7 +7,7 @@ const { OpenAIAPI } = require('viho-llm');
 const llmConfig = {
   apiKey: global.QZ_CONFIG.kimi.apiKey,
   baseURL: global.QZ_CONFIG.kimi.baseURL,
-  modelName: global.QZ_CONFIG.kimi.modelID,
+  modelName: global.QZ_CONFIG.kimi.modelName,
 };
 
 const llm = OpenAIAPI(llmConfig);
