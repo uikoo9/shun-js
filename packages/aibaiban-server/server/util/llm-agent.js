@@ -5,9 +5,9 @@ const { OpenAIAPI } = require('viho-llm');
  * LLM 配置 - 使用 moonshot 平台的 kimi-k2.5
  */
 const llmConfig = {
-  apiKey: global.QZ_CONFIG.kimi.modelName,
-  baseURL: global.QZ_CONFIG.kimi.modelName,
-  modelName: global.QZ_CONFIG.kimi.modelName,
+  apiKey: global.QZ_CONFIG.kimi.apiKey,
+  baseURL: global.QZ_CONFIG.kimi.baseURL,
+  modelName: global.QZ_CONFIG.kimi.modelID,
 };
 
 const llm = OpenAIAPI(llmConfig);
