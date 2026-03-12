@@ -68,12 +68,20 @@ export const CustomFooter = () => {
           <div className="custom-footer-column">
             <h4 className="custom-footer-title">More</h4>
             <a
-              href="https://b.vincentqiao.com/en/"
+              href="https://blog.vincentqiao.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="custom-footer-link"
             >
               Blog
+            </a>
+            <a
+              href="https://blog.csdn.net/uikoo9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-footer-link"
+            >
+              CSDN
             </a>
             <a
               href="https://resume.vincentqiao.com/"
