@@ -14,4 +14,9 @@ module.exports = (app) => {
   app.post('/drawWithTools', (req, res) => {
     service.drawWithTools(req, res);
   });
+
+  // draw/agent (流式 Agent)
+  app.post('/draw/agent', (req, res) => {
+    service.drawAgent(req, res);
+  });
 };
