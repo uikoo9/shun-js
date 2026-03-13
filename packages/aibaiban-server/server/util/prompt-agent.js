@@ -74,6 +74,12 @@ module.exports = {
 图表类型: {diagramType}
 细化描述: {elaboration}
 
+⚠️ 重要语法限制:
+1. 禁止使用以下 Mermaid 保留字作为节点名称: start, end, stop, pause, resume, done, state, choice, fork, join
+2. 如果流程有"开始"或"结束"，使用"开始"((开始))、"结束"((结束)) 或 图标如((●))、((○)) 代替
+3. 节点名称避免使用特殊符号如括号()[]{}，可以用中文双引号""包裹
+4. 连接线避免使用特殊字符，用中文描述如"是"、"否"、"到"
+
 要求:
 1. 生成合法的 Mermaid 语法
 2. 使用中文标签
