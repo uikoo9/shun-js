@@ -43,9 +43,9 @@ function extractJSON(text) {
 
 /**
  * 流式调用 LLM 并解析 JSON
- * 使用非流式 API，但过程流式输出给客户端
+ * 不发送中间 delta，只返回解析后的结果
  */
-exports.callLLMForJSON = async (prompt, res, step) => {
+exports.callLLMForJSON = async (prompt) => {
   // 非流式调用，等待完整响应
   const response = await llm.chat({
     model: llmConfig.modelName,
@@ -53,16 +53,15 @@ exports.callLLMForJSON = async (prompt, res, step) => {
   });
 
   const fullContent = response.content || '';
-  // 流式输出给客户端
-  res.streaming(`data: ${JSON.stringify({ step, delta: fullContent })}\n\n`);
-
+  // 不发送 delta，直接返回结果让调用方处理
   return extractJSON(fullContent);
 };
 
 /**
  * 流式调用 LLM（普通文本）
+ * 不发送中间 delta，只返回完整内容
  */
-exports.callLLM = async (prompt, res, step) => {
+exports.callLLM = async (prompt) => {
   let fullContent = '';
 
   await llm.chatWithStreaming(
@@ -70,8 +69,7 @@ exports.callLLM = async (prompt, res, step) => {
     {
       contentCallback: (chunk) => {
         fullContent += chunk;
-        // 直接流式返回给客户端
-        res.streaming(`data: ${JSON.stringify({ step, delta: chunk })}\n\n`);
+        // 不发送中间 delta，避免显示问题
       },
     },
   );
