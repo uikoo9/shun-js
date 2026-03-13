@@ -5,18 +5,8 @@ const service = require('../service/LLMService.js');
  * controller
  */
 module.exports = (app) => {
-  // intent
-  app.post('/intent', (req, res) => {
-    service.intent(req, res);
-  });
-
-  // drawWithTools (使用结构化 JSON 输出)
-  app.post('/drawWithTools', (req, res) => {
-    service.drawWithTools(req, res);
-  });
-
-  // draw/agent (流式 Agent)
-  app.post('/draw/agent', (req, res) => {
+  // draw agent
+  app.post('/chat-streaming', (req, res) => {
     service.drawAgent(req, res);
   });
 };
