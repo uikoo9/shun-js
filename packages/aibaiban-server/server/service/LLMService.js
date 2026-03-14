@@ -2,6 +2,9 @@
 const { callLLMForJSON, callLLM } = require('../util/llm-agent.js');
 const prompts = require('../util/prompt-agent.js');
 
+// util
+const { chatFeishuMsg, errorFeishuMsg } = require('../util/feishu.js');
+
 /**
  * drawAgent - 流式 Agent 接口
  * 流程：router -> classify -> elaborate -> review -> generate
@@ -22,15 +25,18 @@ exports.drawAgent = async (req, res) => {
 
   const input = decodeURIComponent(req.body.userPrompt);
   req.logger.info(methodName, 'userPrompt', input);
+  chatFeishuMsg(req, `userPrompt-${input}`);
 
   try {
-    // 1. router - 判断意图
+    // start
     res.streaming(`data: ${JSON.stringify({ step: 'router', status: 'start' })}\n\n`);
     req.logger.info(methodName, 'step: router');
+
+    // intent
     const intentResult = await callLLMForJSON(prompts.ROUTER_PROMPT.replace('{input}', input), res, 'router');
     const intent = intentResult.intent;
     req.logger.info(methodName, 'intent', intent);
-    // 发送结果
+    chatFeishuMsg(req, `intent-${intent}`);
     res.streaming(`data: ${JSON.stringify({ step: 'router', intent })}\n\n`);
 
     // 非白板请求
@@ -48,7 +54,7 @@ exports.drawAgent = async (req, res) => {
     const classifyResult = await callLLMForJSON(prompts.CLASSIFY_PROMPT.replace('{input}', input), res, 'classify');
     const diagramType = classifyResult.diagramType;
     req.logger.info(methodName, 'diagramType', diagramType);
-    // 发送结果
+    chatFeishuMsg(req, `diagramType-${diagramType}`);
     res.streaming(`data: ${JSON.stringify({ step: 'classify', diagramType })}\n\n`);
 
     // 3. elaborate - 细化内容
@@ -60,7 +66,7 @@ exports.drawAgent = async (req, res) => {
       'elaborate',
     );
     req.logger.info(methodName, 'elaboration', elaboration.slice(0, 100) + '...');
-    // 发送结果（不显示内容，只标记完成）
+    chatFeishuMsg(req, `elaboration-${elaboration}`);
     res.streaming(`data: ${JSON.stringify({ step: 'elaborate', done: true })}\n\n`);
 
     // 4. review - 质量检查
@@ -74,7 +80,7 @@ exports.drawAgent = async (req, res) => {
       'review',
     );
     req.logger.info(methodName, 'reviewResult', reviewResult);
-    // 发送结果
+    chatFeishuMsg(req, `reviewResult-${reviewResult}`);
     res.streaming(`data: ${JSON.stringify({ step: 'review', result: reviewResult.result })}\n\n`);
 
     // 信息不足，追问用户
@@ -98,14 +104,15 @@ exports.drawAgent = async (req, res) => {
       res,
       'generate',
     );
-
     req.logger.info(methodName, 'mermaidCode', mermaidCode.slice(0, 100) + '...');
+    chatFeishuMsg(req, `mermaidCode-${mermaidCode}`);
 
     // 返回最终结果
     res.streaming(`data: ${JSON.stringify({ step: 'generate', mermaidCode })}\n\n`);
     res.streamingEnd();
   } catch (error) {
     req.logger.error(methodName, 'error', error);
+    errorFeishuMsg(req, error.message);
     res.streaming(`data: ${JSON.stringify({ step: 'error', message: error.message })}\n\n`);
     res.streamingEnd();
   }

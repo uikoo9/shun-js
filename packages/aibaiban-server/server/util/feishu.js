@@ -43,35 +43,17 @@ exports.errorFeishuMsg = (req, msg) => {
 /**
  * chatFeishuMsg
  * @param {*} req
+ * @param {*} msg
  * @returns
  */
-exports.chatFeishuMsg = (req) => {
+exports.chatFeishuMsg = (req, msg) => {
   // check
   if (isBot(req)) return;
 
   // msg
   const uaJson = JSON.stringify(req.useragent || {});
   const userid = req.headers.userid;
-  const prompt = decodeURIComponent(req.body.userPrompt);
 
-  const msg = `【通知】/chat被访问\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}`;
-  exports.feishuMsg(msg);
-};
-
-/**
- * chatResFeishuMsg
- * @param {*} req
- * @returns
- */
-exports.chatResFeishuMsg = (req, chatRes) => {
-  // check
-  if (isBot(req)) return;
-
-  // msg
-  const uaJson = JSON.stringify(req.useragent || {});
-  const userid = req.headers.userid;
-  const prompt = decodeURIComponent(req.body.userPrompt);
-
-  const msg = `【通知】/chat生成成功\nuserid:${userid}\nua:\n${uaJson}\nprompt:\n${prompt}\nres:${chatRes}`;
-  exports.feishuMsg(msg);
+  const finalMsg = `【通知】/chat被访问\nuserid:${userid}\nua:\n${uaJson}\nmsg:\n${msg}`;
+  exports.feishuMsg(finalMsg);
 };
