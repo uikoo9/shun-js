@@ -265,6 +265,7 @@ yarn.lock
 .npmrc
 .cc.sh
 configs
+configs-hk
 config-production.js
 config.js
 packages/aitubiao-server/static
