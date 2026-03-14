@@ -84,14 +84,6 @@ export const CustomFooter = () => {
               CSDN
             </a>
             <a
-              href="https://resume.vincentqiao.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="custom-footer-link"
-            >
-              Resume
-            </a>
-            <a
               href="https://code.vincentqiao.com/#/"
               target="_blank"
               rel="noopener noreferrer"
@@ -112,6 +104,14 @@ export const CustomFooter = () => {
             >
               GitHub
             </a>
+            <a
+              href="https://resume.vincentqiao.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-footer-link"
+            >
+              Resume
+            </a>
             <a href="mailto:hello@vincentqiao.com" className="custom-footer-link">
               hello@vincentqiao.com
             </a>
@@ -120,7 +120,18 @@ export const CustomFooter = () => {
       </footer>
 
       <div className="custom-sub-footer">
-        <span>© 2026 Vincent. All rights reserved.</span>
+        <span>
+          © 2026{' '}
+          <a
+            href="https://www.vincentqiao.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="custom-sub-footer-link"
+          >
+            vincentqiao.com
+          </a>
+          . All rights reserved.
+        </span>
       </div>
     </>
   );
