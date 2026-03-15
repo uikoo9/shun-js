@@ -7,7 +7,7 @@ module.exports = {
   /**
    * 意图分类 - 判断是否与白板相关
    */
-  ROUTER_PROMPT: `你是一个意图分类器。判断用户输入是否与"画图/白板/图表/流程图/甘特图/思维导图/时序图/PRD"相关。
+  ROUTER_PROMPT: `你是一个意图分类器。判断用户输入是否与"画图/白板/图表/流程图/甘特图/思维导图/时序图/类图/状态图/ER图/饼图/Git分支图/用户旅程图"相关。
 
 用户输入: {input}
 
@@ -20,10 +20,15 @@ module.exports = {
 
 可选类型:
 - flowchart: 流程图、步骤图、决策流程
+- sequence: 时序图、交互流程、调用链
+- classDiagram: 类图、对象关系、继承结构
+- stateDiagram: 状态图、状态机、状态流转
+- erDiagram: ER图、实体关系图、数据库设计
 - gantt: 甘特图、项目计划、时间线
-- prd: 产品需求文档结构图
+- pie: 饼图、占比图、比例分布
+- gitGraph: Git分支图、版本管理流程
+- journey: 用户旅程图、体验地图
 - mindmap: 思维导图、知识结构
-- sequence: 时序图、交互流程
 
 用户输入: {input}
 
@@ -40,10 +45,15 @@ module.exports = {
 请输出结构化的 JSON 描述，包含图表的所有节点、连接关系、标签等信息。
 根据图表类型调整结构:
 - flowchart: {"nodes": [...], "edges": [...]}
-- gantt: {"tasks": [{"name": "", "start": "", "duration": ""}]}
-- mindmap: {"root": "", "children": [...]}
 - sequence: {"participants": [...], "messages": [...]}
-- prd: {"modules": [...], "relations": [...]}
+- classDiagram: {"classes": [{"name": "", "attributes": [...], "methods": [...]}], "relations": [...]}
+- stateDiagram: {"states": [...], "transitions": [...]}
+- erDiagram: {"entities": [{"name": "", "attributes": [...]}], "relations": [...]}
+- gantt: {"tasks": [{"name": "", "start": "", "duration": ""}]}
+- pie: {"title": "", "slices": [{"label": "", "value": 0}]}
+- gitGraph: {"branches": [...], "commits": [...], "merges": [...]}
+- journey: {"title": "", "sections": [{"name": "", "tasks": [{"name": "", "score": 0}]}]}
+- mindmap: {"root": "", "children": [...]}
 
 只回复 JSON。`,
 
@@ -91,5 +101,5 @@ module.exports = {
    * 非白板请求的固定回复
    */
   FIXED_REPLY:
-    '我是一个白板助手，专门帮你生成各种图表。你可以让我画流程图、甘特图、思维导图、时序图等。请告诉我你想画什么图吧！',
+    '我是一个白板助手，专门帮你生成各种图表。支持：流程图、时序图、类图、状态图、ER图、甘特图、饼图、Git分支图、用户旅程图、思维导图。请告诉我你想画什么图吧！',
 };

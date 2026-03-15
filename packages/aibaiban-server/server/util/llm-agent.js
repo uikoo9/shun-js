@@ -44,7 +44,7 @@ function extractJSON(text) {
 exports.callLLMForJSON = async (prompt) => {
   // 非流式调用，等待完整响应
   const response = await llm.chat({
-    model: llmConfig.modelName,
+    model: finalLLMConfig.modelName,
     messages: [{ role: 'user', content: prompt }],
   });
 
@@ -61,7 +61,7 @@ exports.callLLM = async (prompt) => {
   let fullContent = '';
 
   await llm.chatWithStreaming(
-    { model: llmConfig.modelName, messages: [{ role: 'user', content: prompt }] },
+    { model: finalLLMConfig.modelName, messages: [{ role: 'user', content: prompt }] },
     {
       contentCallback: (chunk) => {
         fullContent += chunk;
