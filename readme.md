@@ -33,7 +33,6 @@ shunjs start @shun-js/feishu-grafana-alert @shun-js/xxx
 - @shun-js/mcp-admin-server: 7003-mcp-servers.online admin
 - @shun-js/mcp-index-server: 7004-mcp-servers.online index
 - @shun-js/mcp-api-server: 7005-mcp-servers.online api
-- @shun-js/aibaiban-server: 7006-aibaiban.com
 - @shun-js/remotion-server: 7007-remotion.cool
 - @shun-js/webcc-server: 7008-webcc.dev
 - @shun-js/webcc-ws: 7009-ws.webcc.dev

@@ -29,7 +29,6 @@ cd configs && shunjs start @shun-js/<package-name>
 
 # Build a web app (outputs to corresponding server's static/ and views/)
 npm run build:aitubiao-web
-npm run build:aibaiban-web
 npm run build:mcp-admin-web
 npm run build:mcp-index-web
 
@@ -58,7 +57,7 @@ Commits use **conventional commits** enforced by commitlint + husky. Pre-commit 
 
 **Business modules (ports 7001–7009):**
 
-- Server packages (e.g. `aitubiao-server`, `aibaiban-server`) — Express apps with `app.js` entry
+- Server packages (e.g. `aitubiao-server`) — Express apps with `app.js` entry
 - Web packages (e.g. `aitubiao-web`, `mcp-admin-web`) — React 19 + Tailwind v4 + daisyUI, built with `qiao-webpack`
 - Web builds output static assets into the paired server package's `static/` and `views/` directories
 - Static assets are uploaded to Tencent COS via `qcos`
