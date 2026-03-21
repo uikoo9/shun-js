@@ -4,6 +4,7 @@ const { fetchClarityData } = require('../model/DataModel.js');
 // util
 const { sleep, extractMetric, getUV } = require('../util/clarity.js');
 const { fetchSearchConsoleData, getSearchConsoleSummary } = require('../util/google.js');
+const { fetchBingWebmasterData } = require('../util/bing.js');
 const { buildFeishuMessage, feishuMsg } = require('../util/feishu.js');
 
 // logger
@@ -21,6 +22,7 @@ exports.dataReport = async () => {
   const projects = global.QZ_CONFIG.projects;
   const numOfDays = global.QZ_CONFIG.numOfDays;
   const googleCredentials = global.QZ_CONFIG.googleCredentials;
+  const bingApiKey = global.QZ_CONFIG.bingApiKey;
 
   // check
   if (!projects || projects.length === 0) {
@@ -32,7 +34,7 @@ exports.dataReport = async () => {
   // 逐个请求，每次间隔 1 秒
   const results = [];
   for (const project of projects) {
-    const result = { name: project.name, clarity: false, google: false };
+    const result = { name: project.name, clarity: false, google: false, bing: false };
 
     // Clarity
     if (project.clarityToken) {
@@ -55,6 +57,17 @@ exports.dataReport = async () => {
         logger.info(methodName, `  ✅ ${project.name} [Google]`);
       } catch (err) {
         logger.error(methodName, `  ❌ ${project.name} [Google]: ${err.message}`);
+      }
+    }
+
+    // Bing Webmaster
+    if (bingApiKey) {
+      try {
+        const bingSiteUrl = `https://${project.name}`;
+        result.bing = await fetchBingWebmasterData(bingApiKey, bingSiteUrl, numOfDays);
+        logger.info(methodName, `  ✅ ${project.name} [Bing]`);
+      } catch (err) {
+        logger.error(methodName, `  ❌ ${project.name} [Bing]: ${err.message}`);
       }
     }
 
