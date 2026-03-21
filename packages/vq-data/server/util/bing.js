@@ -24,7 +24,7 @@ exports.fetchBingWebmasterData = async (apiKey, siteUrl, numOfDays) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`,
+      Authorization: `Bearer ${apiKey}`,
     },
   };
 
