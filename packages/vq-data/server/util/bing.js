@@ -13,6 +13,7 @@ exports.fetchBingWebmasterData = async (apiKey, siteUrl, numOfDays) => {
   startDate.setDate(endDate.getDate() - numOfDays);
 
   const params = new URLSearchParams({
+    apikey: apiKey,
     siteUrl,
     startDate: formatDate(startDate),
     endDate: formatDate(endDate),
@@ -24,7 +25,6 @@ exports.fetchBingWebmasterData = async (apiKey, siteUrl, numOfDays) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
     },
   };
 
