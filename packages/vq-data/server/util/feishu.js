@@ -44,9 +44,14 @@ exports.buildFeishuMessage = (results, numOfDays) => {
 
     // Google Search Console
     if (r.google) {
-      content += `   点击: ${r.google.clicks}  |  曝光: ${r.google.impressions}  |  CTR: ${r.google.ctr}%  |  排名: ${r.google.position}\n`;
+      content += `   Google - 点击: ${r.google.clicks}  |  曝光: ${r.google.impressions}  |  CTR: ${r.google.ctr}%  |  排名: ${r.google.position}\n`;
     } else {
-      content += `   点击: -  |  曝光: -  |  CTR: -  |  排名: -\n`;
+      content += `   Google - 点击: -  |  曝光: -  |  CTR: -  |  排名: -\n`;
+    }
+
+    // Bing Webmaster
+    if (r.bing) {
+      content += `   Bing - 点击: ${r.bing.clicks}  |  曝光: ${r.bing.impressions}  |  CTR: ${r.bing.ctr}%  |  排名: ${r.bing.position}\n`;
     }
 
     content += '\n';
