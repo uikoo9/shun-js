@@ -1,5 +1,5 @@
 // model
-const { addUserInfo, isUserInfoExists } = require('../model/UserInfoModel.js');
+const { addUserInfoByGoogle, isUserInfoExists } = require('../model/UserInfoModel.js');
 
 // google
 const { getGoogleUserinfo } = require('../util/google.js');
@@ -45,7 +45,7 @@ exports.userGoogle = async (req, res) => {
   const isUserInfoExistsRes = await isUserInfoExists(req, res, userItem.id);
   if (!isUserInfoExistsRes) return;
   if (isUserInfoExistsRes.length === 0) {
-    const addUserInfoRes = await addUserInfo(req, res, userItem.id, googleUserinfo);
+    const addUserInfoRes = await addUserInfoByGoogle(req, res, userItem.id, googleUserinfo);
     if (!addUserInfoRes) return;
   }
 

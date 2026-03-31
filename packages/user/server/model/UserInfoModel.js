@@ -22,20 +22,46 @@ exports.isUserInfoExists = async (req, res, id) => {
 };
 
 /**
- * addUserInfo
+ * addUserInfoByGithub
  * @param {*} req
  * @param {*} res
  * @param {*} userItemId
  * @param {*} githubUserinfo
  * @returns
  */
-exports.addUserInfo = async (req, res, userItemId, githubUserinfo) => {
-  const methodName = 'addUserInfo';
+exports.addUserInfoByGithub = async (req, res, userItemId, githubUserinfo) => {
+  const methodName = 'addUserInfoByGithub';
 
   // add user item
   try {
     // add user
     const params = [userItemId, githubUserinfo.login, githubUserinfo.avatar_url, githubUserinfo.email];
+    await req.db.query(sql.addUserInfo, params);
+
+    // r
+    return true;
+  } catch (error) {
+    const msg = '添加用户失败！';
+    req.logger.error(methodName, msg, error.name, error.message);
+    res.jsonFail(msg);
+  }
+};
+
+/**
+ * addUserInfoByGoogle
+ * @param {*} req
+ * @param {*} res
+ * @param {*} userItemId
+ * @param {*} googleUserinfo
+ * @returns
+ */
+exports.addUserInfoByGoogle = async (req, res, userItemId, googleUserinfo) => {
+  const methodName = 'addUserInfoByGoogle';
+
+  // add user item
+  try {
+    // add user
+    const params = [userItemId, googleUserinfo.name, googleUserinfo.picture, googleUserinfo.email];
     await req.db.query(sql.addUserInfo, params);
 
     // r
