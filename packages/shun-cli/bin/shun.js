@@ -56,13 +56,15 @@ async function startServer(input) {
   npm.installGlobal(pkgWithVersion);
   log.br();
 
-  // 2. 定位 app.js
+  // 2. 定位入口文件
   const globalPath = npm.getGlobalPath();
   const serverRoot = path.resolve(globalPath, pkg);
-  const appPath = path.resolve(serverRoot, 'app.js');
+  const pkgJson = path.resolve(serverRoot, 'package.json');
+  const entry = fs.existsSync(pkgJson) ? require(pkgJson).main || 'app.js' : 'app.js';
+  const appPath = path.resolve(serverRoot, entry);
 
   if (!fs.existsSync(appPath)) {
-    log.error(`app.js not found: ${appPath}`);
+    log.error(`entry not found: ${appPath}`);
     console.log();
     return;
   }
